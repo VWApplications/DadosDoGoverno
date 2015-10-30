@@ -16,8 +16,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonListaDeDeputados = new javax.swing.JButton();
         jLabelListaDePartidos = new javax.swing.JLabel();
         jButtonListaDePartidos = new javax.swing.JButton();
-        jLabelPesquisarPolitico = new javax.swing.JLabel();
-        jButtonPesquisarPolitico = new javax.swing.JButton();
         jLabelRelatorio = new javax.swing.JLabel();
         jButtonRelatorio = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
@@ -29,7 +27,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemListaPartidos = new javax.swing.JMenuItem();
         jMenuFerramentas = new javax.swing.JMenu();
         jMenuItemBemVindo = new javax.swing.JMenuItem();
-        jMenuItemPesquisar = new javax.swing.JMenuItem();
         jMenuItemRelatorio = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
@@ -49,6 +46,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonListaDeDeputados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/politico3.png"))); // NOI18N
         jButtonListaDeDeputados.setToolTipText("Lista de Deputados");
+        jButtonListaDeDeputados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaDeDeputadosActionPerformed(evt);
+            }
+        });
         jInternalFrameBemVindo.getContentPane().add(jButtonListaDeDeputados);
         jButtonListaDeDeputados.setBounds(70, 70, 140, 130);
 
@@ -59,28 +61,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonListaDePartidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/brasao2.png"))); // NOI18N
         jButtonListaDePartidos.setToolTipText("Lista de Partidos");
+        jButtonListaDePartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListaDePartidosActionPerformed(evt);
+            }
+        });
         jInternalFrameBemVindo.getContentPane().add(jButtonListaDePartidos);
         jButtonListaDePartidos.setBounds(60, 280, 150, 120);
-
-        jLabelPesquisarPolitico.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jLabelPesquisarPolitico.setText("Pesquisar Deputados: ");
-        jInternalFrameBemVindo.getContentPane().add(jLabelPesquisarPolitico);
-        jLabelPesquisarPolitico.setBounds(320, 30, 200, 21);
-
-        jButtonPesquisarPolitico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/politico2.png"))); // NOI18N
-        jButtonPesquisarPolitico.setToolTipText("Pesquisar deputados");
-        jInternalFrameBemVindo.getContentPane().add(jButtonPesquisarPolitico);
-        jButtonPesquisarPolitico.setBounds(350, 70, 140, 130);
 
         jLabelRelatorio.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabelRelatorio.setText("Relatório completo de cada deputado: ");
         jInternalFrameBemVindo.getContentPane().add(jLabelRelatorio);
-        jLabelRelatorio.setBounds(270, 240, 340, 21);
+        jLabelRelatorio.setBounds(270, 70, 340, 21);
 
-        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorio2.png"))); // NOI18N
+        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rel1.png"))); // NOI18N
         jButtonRelatorio.setToolTipText("Relatorio completo de cada deputado");
+        jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRelatorioActionPerformed(evt);
+            }
+        });
         jInternalFrameBemVindo.getContentPane().add(jButtonRelatorio);
-        jButtonRelatorio.setBounds(350, 280, 140, 120);
+        jButtonRelatorio.setBounds(320, 100, 230, 260);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,12 +107,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuLista.setText("Lista");
 
-        jMenuItemListaDeputados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemListaDeputados.setText("Lista de deputados");
+        jMenuItemListaDeputados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListaDeputadosActionPerformed(evt);
+            }
+        });
         jMenuLista.add(jMenuItemListaDeputados);
 
-        jMenuItemListaPartidos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemListaPartidos.setText("Deputados por partido");
+        jMenuItemListaPartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListaPartidosActionPerformed(evt);
+            }
+        });
         jMenuLista.add(jMenuItemListaPartidos);
 
         jMenuBar.add(jMenuLista);
@@ -125,12 +135,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuFerramentas.add(jMenuItemBemVindo);
 
-        jMenuItemPesquisar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemPesquisar.setText("Pesquisar");
-        jMenuFerramentas.add(jMenuItemPesquisar);
-
         jMenuItemRelatorio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemRelatorio.setText("Relatório completo");
+        jMenuItemRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelatorioActionPerformed(evt);
+            }
+        });
         jMenuFerramentas.add(jMenuItemRelatorio);
 
         jMenuBar.add(jMenuFerramentas);
@@ -160,6 +171,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jMenuItemBemVindoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBemVindoActionPerformed
         jInternalFrameBemVindo.setVisible(true);
     }//GEN-LAST:event_jMenuItemBemVindoActionPerformed
+
+    private void jButtonListaDeDeputadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeDeputadosActionPerformed
+        ListaDeputados listaD = new ListaDeputados();
+        listaD.setVisible(true);
+    }//GEN-LAST:event_jButtonListaDeDeputadosActionPerformed
+
+    private void jButtonListaDePartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDePartidosActionPerformed
+        ListaPartidos listaP = new ListaPartidos();
+        listaP.setVisible(true);
+    }//GEN-LAST:event_jButtonListaDePartidosActionPerformed
+
+    private void jMenuItemListaDeputadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaDeputadosActionPerformed
+        ListaDeputados listaD = new ListaDeputados();
+        listaD.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListaDeputadosActionPerformed
+
+    private void jMenuItemListaPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaPartidosActionPerformed
+        ListaPartidos listaP = new ListaPartidos();
+        listaP.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListaPartidosActionPerformed
+
+    private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
+        RelatorioDeputados relatorio = new RelatorioDeputados();
+        relatorio.setVisible(true);
+    }//GEN-LAST:event_jButtonRelatorioActionPerformed
+
+    private void jMenuItemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioActionPerformed
+        RelatorioDeputados relatorio = new RelatorioDeputados();
+        relatorio.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelatorioActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -197,13 +238,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonListaDeDeputados;
     private javax.swing.JButton jButtonListaDePartidos;
-    private javax.swing.JButton jButtonPesquisarPolitico;
     private javax.swing.JButton jButtonRelatorio;
     private javax.swing.JInternalFrame jInternalFrameBemVindo;
     private javax.swing.JLabel jLabelJFrame;
     private javax.swing.JLabel jLabelListaDeDeputados;
     private javax.swing.JLabel jLabelListaDePartidos;
-    private javax.swing.JLabel jLabelPesquisarPolitico;
     private javax.swing.JLabel jLabelRelatorio;
     private javax.swing.JLabel jLabelTelaInternalFrame;
     private javax.swing.JMenuBar jMenuBar;
@@ -211,7 +250,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemBemVindo;
     private javax.swing.JMenuItem jMenuItemListaDeputados;
     private javax.swing.JMenuItem jMenuItemListaPartidos;
-    private javax.swing.JMenuItem jMenuItemPesquisar;
     private javax.swing.JMenuItem jMenuItemRelatorio;
     private javax.swing.JMenu jMenuLista;
     private javax.swing.JMenu jMenuSair;

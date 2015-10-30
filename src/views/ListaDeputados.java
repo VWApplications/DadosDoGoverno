@@ -75,6 +75,11 @@ public class ListaDeputados extends javax.swing.JFrame {
         jButtonPesquisar.setBounds(200, 180, 220, 70);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFecharActionPerformed(evt);
+            }
+        });
         jInternalFrameListaDeputados.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(580, 0, 40, 40);
 
@@ -88,6 +93,10 @@ public class ListaDeputados extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     /**
      * @param args the command line arguments
