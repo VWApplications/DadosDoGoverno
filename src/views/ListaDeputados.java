@@ -34,6 +34,7 @@ public class ListaDeputados extends javax.swing.JFrame {
         jTextFieldPesquisar = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
+        jButtonDetalhes = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,6 +83,10 @@ public class ListaDeputados extends javax.swing.JFrame {
         });
         jInternalFrameListaDeputados.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(580, 0, 40, 40);
+
+        jButtonDetalhes.setText("Detalhes");
+        jInternalFrameListaDeputados.getContentPane().add(jButtonDetalhes);
+        jButtonDetalhes.setBounds(10, 20, 90, 29);
 
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/debate.jpg"))); // NOI18N
         jInternalFrameListaDeputados.getContentPane().add(jLabelFundo);
@@ -135,6 +140,7 @@ public class ListaDeputados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDetalhes;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox jComboBoxOrdem;
