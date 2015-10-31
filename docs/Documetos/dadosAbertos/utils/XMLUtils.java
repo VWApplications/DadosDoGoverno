@@ -1,4 +1,4 @@
-package dadosAbertos.utils;
+package edu.unb.fga.dadosabertos.utils;
 
 import java.io.InputStream;
 import javax.xml.bind.JAXBContext;

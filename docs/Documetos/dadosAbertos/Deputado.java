@@ -1,9 +1,9 @@
 
-package dadosAbertos;
+package edu.unb.fga.dadosabertos;
 
-import dadosAbertos.utils.XMLUtils;
-import dadosAbertos.utils.HttpUtils;
-import dadosAbertos.wrappers.DetalhesXML;
+import edu.unb.fga.dadosabertos.utils.HttpUtils;
+import edu.unb.fga.dadosabertos.utils.XMLUtils;
+import edu.unb.fga.dadosabertos.wrappers.DetalhesXML;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;

@@ -1,8 +1,8 @@
-package dadosAbertos;
+package edu.unb.fga.dadosabertos;
 
-import dadosAbertos.utils.XMLUtils;
-import dadosAbertos.utils.HttpUtils;
-import dadosAbertos.wrappers.DeputadoXML;
+import edu.unb.fga.dadosabertos.utils.HttpUtils;
+import edu.unb.fga.dadosabertos.utils.XMLUtils;
+import edu.unb.fga.dadosabertos.wrappers.DeputadoXML;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -11,8 +11,8 @@ import javax.xml.bind.JAXBException;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 /**
- * Principal classe da biblioteca. Através dela é possível obter todos os outros dados.
- * 
+ * Principal classe da biblioteca. Através dela é possível obter todos os outros
+ * dados.
  */
 public class Camara {
 
@@ -43,7 +43,7 @@ public class Camara {
     /**
      * Retorna a lista de deputados. Deve ser chamada após {@link Camara#obterDados}
      * 
-     * @return Retorna a lista de deputados
+     * @return a lista de deputados
      */
     public List<Deputado> getDeputados() {
         return deputados;

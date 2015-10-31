@@ -1,0 +1,5 @@
+Model = objetos do trabalho, onde está as informações
+Controller = classes que faz acesso as informações do programa
+view = interface grafica, vizualização
+
+add bibliotecas no projeto = buid tag

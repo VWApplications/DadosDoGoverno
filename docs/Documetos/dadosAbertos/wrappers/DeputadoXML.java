@@ -1,6 +1,6 @@
-package dadosAbertos.wrappers;
+package edu.unb.fga.dadosabertos.wrappers;
 
-import dadosAbertos.Deputado;
+import edu.unb.fga.dadosabertos.Deputado;
 import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;

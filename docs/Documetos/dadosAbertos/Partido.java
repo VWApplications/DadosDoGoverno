@@ -1,4 +1,4 @@
-package dadosAbertos;
+package edu.unb.fga.dadosabertos;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

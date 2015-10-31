@@ -1,4 +1,4 @@
-package dadosAbertos.utils;
+package edu.unb.fga.dadosabertos.utils;
 
 import java.io.IOException;
 import org.apache.commons.httpclient.HttpClient;
@@ -7,7 +7,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 /**
- * Classe de utilidade para realizar transações HTTP.
+ * Classe de utilidade para realizar transções HTTP.
  */
 public class HttpUtils {
 
