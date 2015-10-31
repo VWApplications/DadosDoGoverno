@@ -17,10 +17,9 @@ public class ListaPartidos extends javax.swing.JFrame {
         jComboBoxOrdem = new javax.swing.JComboBox();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
-        jButtonDetalhes = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(630, 480));
         setPreferredSize(new java.awt.Dimension(630, 478));
         setResizable(false);
@@ -67,10 +66,6 @@ public class ListaPartidos extends javax.swing.JFrame {
         });
         jInternalFrameListaPartidos.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(580, 0, 40, 40);
-
-        jButtonDetalhes.setText("Detalhes");
-        jInternalFrameListaPartidos.getContentPane().add(jButtonDetalhes);
-        jButtonDetalhes.setBounds(10, 10, 90, 29);
 
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/debate.jpg"))); // NOI18N
         jInternalFrameListaPartidos.getContentPane().add(jLabelFundo);
@@ -120,7 +115,6 @@ public class ListaPartidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDetalhes;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JComboBox jComboBoxOrdem;

@@ -16,9 +16,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonListaDeDeputados = new javax.swing.JButton();
         jLabelListaDePartidos = new javax.swing.JLabel();
         jButtonListaDePartidos = new javax.swing.JButton();
-        jLabelRelatorio = new javax.swing.JLabel();
-        jButtonRelatorio = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabelTelaInternalFrame = new javax.swing.JLabel();
         jLabelJFrame = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -27,10 +26,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemListaPartidos = new javax.swing.JMenuItem();
         jMenuFerramentas = new javax.swing.JMenu();
         jMenuItemBemVindo = new javax.swing.JMenuItem();
-        jMenuItemRelatorio = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 650));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -59,7 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrameBemVindo.getContentPane().add(jLabelListaDePartidos);
         jLabelListaDePartidos.setBounds(60, 240, 160, 20);
 
-        jButtonListaDePartidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/brasao2.png"))); // NOI18N
+        jButtonListaDePartidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Partidos.png"))); // NOI18N
         jButtonListaDePartidos.setToolTipText("Lista de Partidos");
         jButtonListaDePartidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,22 +65,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jInternalFrameBemVindo.getContentPane().add(jButtonListaDePartidos);
-        jButtonListaDePartidos.setBounds(60, 280, 150, 120);
-
-        jLabelRelatorio.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jLabelRelatorio.setText("Relatório completo de cada deputado: ");
-        jInternalFrameBemVindo.getContentPane().add(jLabelRelatorio);
-        jLabelRelatorio.setBounds(270, 70, 340, 21);
-
-        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rel1.png"))); // NOI18N
-        jButtonRelatorio.setToolTipText("Relatorio completo de cada deputado");
-        jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRelatorioActionPerformed(evt);
-            }
-        });
-        jInternalFrameBemVindo.getContentPane().add(jButtonRelatorio);
-        jButtonRelatorio.setBounds(320, 100, 230, 260);
+        jButtonListaDePartidos.setBounds(70, 270, 140, 130);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +75,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jInternalFrameBemVindo.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(830, 0, 40, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/brasao.png"))); // NOI18N
+        jInternalFrameBemVindo.getContentPane().add(jLabel1);
+        jLabel1.setBounds(240, 10, 490, 440);
 
         jLabelTelaInternalFrame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/telaDeFundo5.jpg"))); // NOI18N
         jInternalFrameBemVindo.getContentPane().add(jLabelTelaInternalFrame);
@@ -134,15 +121,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuFerramentas.add(jMenuItemBemVindo);
-
-        jMenuItemRelatorio.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemRelatorio.setText("Relatório completo");
-        jMenuItemRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemRelatorioActionPerformed(evt);
-            }
-        });
-        jMenuFerramentas.add(jMenuItemRelatorio);
 
         jMenuBar.add(jMenuFerramentas);
 
@@ -192,16 +170,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listaP.setVisible(true);
     }//GEN-LAST:event_jMenuItemListaPartidosActionPerformed
 
-    private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados();
-        relatorio.setVisible(true);
-    }//GEN-LAST:event_jButtonRelatorioActionPerformed
-
-    private void jMenuItemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelatorioActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados();
-        relatorio.setVisible(true);
-    }//GEN-LAST:event_jMenuItemRelatorioActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -238,19 +206,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonListaDeDeputados;
     private javax.swing.JButton jButtonListaDePartidos;
-    private javax.swing.JButton jButtonRelatorio;
     private javax.swing.JInternalFrame jInternalFrameBemVindo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelJFrame;
     private javax.swing.JLabel jLabelListaDeDeputados;
     private javax.swing.JLabel jLabelListaDePartidos;
-    private javax.swing.JLabel jLabelRelatorio;
     private javax.swing.JLabel jLabelTelaInternalFrame;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuFerramentas;
     private javax.swing.JMenuItem jMenuItemBemVindo;
     private javax.swing.JMenuItem jMenuItemListaDeputados;
     private javax.swing.JMenuItem jMenuItemListaPartidos;
-    private javax.swing.JMenuItem jMenuItemRelatorio;
     private javax.swing.JMenu jMenuLista;
     private javax.swing.JMenu jMenuSair;
     // End of variables declaration//GEN-END:variables

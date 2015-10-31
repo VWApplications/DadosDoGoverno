@@ -36,12 +36,10 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jTextFieldNomeParlamentar = new javax.swing.JTextField();
         jLabelAnexo = new javax.swing.JLabel();
         jTextFieldAnexo = new javax.swing.JTextField();
-        jLabelFoto = new javax.swing.JLabel();
-        jLabelFotoView = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonDetalhes = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 1000));
         setPreferredSize(new java.awt.Dimension(740, 500));
         setResizable(false);
@@ -56,7 +54,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelNome);
         jLabelNome.setBounds(30, 50, 70, 21);
 
-        jTextFieldNome.setEnabled(false);
+        jTextFieldNome.setEditable(false);
         jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeActionPerformed(evt);
@@ -81,7 +79,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelPartido);
         jLabelPartido.setBounds(20, 20, 70, 21);
 
-        jTextFieldPartido.setEnabled(false);
+        jTextFieldPartido.setEditable(false);
         jPanelRelatorio.add(jTextFieldPartido);
         jTextFieldPartido.setBounds(100, 20, 50, 27);
 
@@ -92,7 +90,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelEstado);
         jLabelEstado.setBounds(160, 20, 70, 21);
 
-        jTextFieldEstado.setEnabled(false);
+        jTextFieldEstado.setEditable(false);
         jPanelRelatorio.add(jTextFieldEstado);
         jTextFieldEstado.setBounds(240, 20, 50, 27);
 
@@ -103,7 +101,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelEmail);
         jLabelEmail.setBounds(20, 80, 70, 21);
 
-        jTextFieldEmail.setEnabled(false);
+        jTextFieldEmail.setEditable(false);
         jPanelRelatorio.add(jTextFieldEmail);
         jTextFieldEmail.setBounds(100, 80, 260, 27);
 
@@ -114,7 +112,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelTelefone);
         jLabelTelefone.setBounds(0, 110, 90, 21);
 
-        jTextFieldTelefone.setEnabled(false);
+        jTextFieldTelefone.setEditable(false);
         jPanelRelatorio.add(jTextFieldTelefone);
         jTextFieldTelefone.setBounds(100, 110, 220, 27);
 
@@ -125,7 +123,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelCondicao);
         jLabelCondicao.setBounds(-10, 140, 100, 21);
 
-        jTextFieldCondicao.setEnabled(false);
+        jTextFieldCondicao.setEditable(false);
         jPanelRelatorio.add(jTextFieldCondicao);
         jTextFieldCondicao.setBounds(100, 140, 220, 27);
 
@@ -136,7 +134,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelID);
         jLabelID.setBounds(300, 20, 23, 21);
 
-        jTextFieldID.setEnabled(false);
+        jTextFieldID.setEditable(false);
         jPanelRelatorio.add(jTextFieldID);
         jTextFieldID.setBounds(330, 20, 70, 27);
 
@@ -147,7 +145,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelMatricula);
         jLabelMatricula.setBounds(-20, 170, 110, 21);
 
-        jTextFieldMatricula.setEnabled(false);
+        jTextFieldMatricula.setEditable(false);
         jPanelRelatorio.add(jTextFieldMatricula);
         jTextFieldMatricula.setBounds(100, 170, 220, 27);
 
@@ -158,7 +156,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelSexo);
         jLabelSexo.setBounds(30, 200, 60, 21);
 
-        jTextFieldSexo.setEnabled(false);
+        jTextFieldSexo.setEditable(false);
         jPanelRelatorio.add(jTextFieldSexo);
         jTextFieldSexo.setBounds(100, 200, 220, 27);
 
@@ -169,7 +167,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelGabinete);
         jLabelGabinete.setBounds(0, 230, 90, 21);
 
-        jTextFieldGabinete.setEnabled(false);
+        jTextFieldGabinete.setEditable(false);
         jPanelRelatorio.add(jTextFieldGabinete);
         jTextFieldGabinete.setBounds(100, 230, 220, 27);
 
@@ -180,7 +178,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelNomeParlamentar);
         jLabelNomeParlamentar.setBounds(20, 270, 250, 21);
 
-        jTextFieldNomeParlamentar.setEnabled(false);
+        jTextFieldNomeParlamentar.setEditable(false);
         jTextFieldNomeParlamentar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNomeParlamentarActionPerformed(evt);
@@ -196,24 +194,15 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jPanelRelatorio.add(jLabelAnexo);
         jLabelAnexo.setBounds(20, 350, 180, 17);
 
-        jTextFieldAnexo.setEnabled(false);
+        jTextFieldAnexo.setEditable(false);
         jPanelRelatorio.add(jTextFieldAnexo);
-        jTextFieldAnexo.setBounds(20, 380, 180, 27);
+        jTextFieldAnexo.setBounds(20, 380, 250, 27);
 
-        jLabelFoto.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
-        jLabelFoto.setForeground(java.awt.Color.white);
-        jLabelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFoto.setText("Foto:");
-        jPanelRelatorio.add(jLabelFoto);
-        jLabelFoto.setBounds(590, 290, 110, 50);
-
-        jLabelFotoView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/UnB.png"))); // NOI18N
-        jPanelRelatorio.add(jLabelFotoView);
-        jLabelFotoView.setBounds(570, 340, 160, 170);
-
-        jButton1.setText("Mais informações");
-        jPanelRelatorio.add(jButton1);
-        jButton1.setBounds(20, 420, 180, 70);
+        jButtonDetalhes.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/chef.png"))); // NOI18N
+        jButtonDetalhes.setText("Mais informações");
+        jPanelRelatorio.add(jButtonDetalhes);
+        jButtonDetalhes.setBounds(470, 380, 250, 100);
 
         jLabelFundo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabelFundo.setForeground(java.awt.Color.white);
@@ -273,14 +262,12 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonDetalhes;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JLabel jLabelAnexo;
     private javax.swing.JLabel jLabelCondicao;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelFoto;
-    private javax.swing.JLabel jLabelFotoView;
     private javax.swing.JLabel jLabelFundo;
     private javax.swing.JLabel jLabelGabinete;
     private javax.swing.JLabel jLabelID;
