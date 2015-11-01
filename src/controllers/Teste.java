@@ -29,21 +29,21 @@ public class Teste {
         //Agora é possivel ver os dados dos deputados
         Deputado deputado = deputados.get(0);
         System.out.println("Nome: "+ deputado.getNome());
-        //System.out.println("Email: "+ deputado.getEmail());
-        //System.out.println("Nome do parlamentar: " + deputado.getNomeParlamentar());
-        //System.out.println("Fone: " + deputado.getFone());
-        //System.out.println("Gabinete: " + deputado.getGabinete());
-        //System.out.println("Anexo: " + deputado.getAnexo());
-        //System.out.println("Condição: " + deputado.getCondicao());
-        //System.out.println("Partido: " + deputado.getPartido());
-        //System.out.println("Sexo: " + deputado.getSexo());
-        //System.out.println("Uf ou Estado: " + deputado.getUf());
-        //System.out.println("URL da foto: " + deputado.getUrlFoto());
-        //System.out.println("ID: " + deputado.getIdeCadastro());
-        //System.out.println("Matricula: "+ deputado.getMatricula());
-        //System.out.println("\n");
+        System.out.println("Email: "+ deputado.getEmail());
+        System.out.println("Nome do parlamentar: " + deputado.getNomeParlamentar());
+        System.out.println("Fone: " + deputado.getFone());
+        System.out.println("Gabinete: " + deputado.getGabinete());
+        System.out.println("Anexo: " + deputado.getAnexo());
+        System.out.println("Condição: " + deputado.getCondicao());
+        System.out.println("Partido: " + deputado.getPartido());
+        System.out.println("Sexo: " + deputado.getSexo());
+        System.out.println("Uf ou Estado: " + deputado.getUf());
+        System.out.println("URL da foto: " + deputado.getUrlFoto());
+        System.out.println("ID: " + deputado.getIdeCadastro());
+        System.out.println("Matricula: "+ deputado.getMatricula());
+        System.out.println("\n");
         
-       /* try {
+       try {
             //Vamos baixar os detalhes dos deputados
             deputado.obterDetalhes();
             JOptionPane.showMessageDialog(null, "Detalhes obtidos com sucesso!");
@@ -74,7 +74,7 @@ public class Teste {
         System.out.println("Data de entrada: " + comissao.getDataEntrada());
         System.out.println("Data de saida: " + comissao.getDataSaida());
         System.out.println("Sigla da comissao: " + comissao.getSiglaComissao());
-        System.out.println("ID do orgão legislativo: " + comissao.getIdOrgaoLegislativoCD());*/
+        System.out.println("ID do orgão legislativo: " + comissao.getIdOrgaoLegislativoCD());
         
     }
 }

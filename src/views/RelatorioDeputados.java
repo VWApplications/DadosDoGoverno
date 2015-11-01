@@ -37,6 +37,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jLabelAnexo = new javax.swing.JLabel();
         jTextFieldAnexo = new javax.swing.JTextField();
         jButtonDetalhes = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -64,6 +65,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jTextFieldNome.setBounds(100, 50, 300, 27);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
+        jButtonFechar.setToolTipText("Fechar");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFecharActionPerformed(evt);
@@ -169,7 +171,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
 
         jTextFieldGabinete.setEditable(false);
         jPanelRelatorio.add(jTextFieldGabinete);
-        jTextFieldGabinete.setBounds(100, 230, 220, 27);
+        jTextFieldGabinete.setBounds(100, 230, 70, 27);
 
         jLabelNomeParlamentar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabelNomeParlamentar.setForeground(java.awt.Color.white);
@@ -192,17 +194,38 @@ public class RelatorioDeputados extends javax.swing.JFrame {
         jLabelAnexo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelAnexo.setText("Anexo:");
         jPanelRelatorio.add(jLabelAnexo);
-        jLabelAnexo.setBounds(20, 350, 180, 17);
+        jLabelAnexo.setBounds(20, 350, 70, 17);
 
         jTextFieldAnexo.setEditable(false);
+        jTextFieldAnexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldAnexoActionPerformed(evt);
+            }
+        });
         jPanelRelatorio.add(jTextFieldAnexo);
-        jTextFieldAnexo.setBounds(20, 380, 250, 27);
+        jTextFieldAnexo.setBounds(100, 350, 70, 27);
 
         jButtonDetalhes.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonDetalhes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/chef.png"))); // NOI18N
         jButtonDetalhes.setText("Mais informações");
+        jButtonDetalhes.setToolTipText("Mais informações sobre o deputado");
+        jButtonDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDetalhesActionPerformed(evt);
+            }
+        });
         jPanelRelatorio.add(jButtonDetalhes);
-        jButtonDetalhes.setBounds(470, 380, 250, 100);
+        jButtonDetalhes.setBounds(20, 400, 250, 100);
+
+        jButtonVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/voltar1.png"))); // NOI18N
+        jButtonVoltar.setToolTipText("Voltar a lista de deputados");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVoltarActionPerformed(evt);
+            }
+        });
+        jPanelRelatorio.add(jButtonVoltar);
+        jButtonVoltar.setBounds(662, 0, 40, 40);
 
         jLabelFundo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabelFundo.setForeground(java.awt.Color.white);
@@ -228,6 +251,22 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     private void jTextFieldNomeParlamentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeParlamentarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeParlamentarActionPerformed
+
+    private void jButtonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesActionPerformed
+        DetalhesDeputados detalhes = new DetalhesDeputados();
+        detalhes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonDetalhesActionPerformed
+
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        ListaDeputados deputado = new ListaDeputados();
+        deputado.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jTextFieldAnexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAnexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldAnexoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -264,6 +303,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDetalhes;
     private javax.swing.JButton jButtonFechar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelAnexo;
     private javax.swing.JLabel jLabelCondicao;
     private javax.swing.JLabel jLabelEmail;

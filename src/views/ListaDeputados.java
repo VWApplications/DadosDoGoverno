@@ -1,9 +1,23 @@
 package views;
 
-public class ListaDeputados extends javax.swing.JFrame {
+import controllers.ControleTabela;
+import edu.unb.fga.dadosabertos.Camara;
+import edu.unb.fga.dadosabertos.Deputado;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
+import models.ModeloTabela;
+import models.ModeloDeputado;
 
+public class ListaDeputados extends javax.swing.JFrame {
+    
+    Camara camara = new Camara();
+    List<Deputado> deputados = camara.getDeputados();
+    ModeloDeputado pesquisa = new ModeloDeputado();
+    
     public ListaDeputados() {
         initComponents();
+        //preencherTabela(deputados);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,7 +31,7 @@ public class ListaDeputados extends javax.swing.JFrame {
         jTextFieldPesquisar = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
-        jButtonDetalhes = new javax.swing.JButton();
+        jButtonRelatorio = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -55,6 +69,11 @@ public class ListaDeputados extends javax.swing.JFrame {
         jButtonPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("PESQUISAR");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
         jInternalFrameListaDeputados.getContentPane().add(jButtonPesquisar);
         jButtonPesquisar.setBounds(200, 180, 220, 70);
 
@@ -67,14 +86,15 @@ public class ListaDeputados extends javax.swing.JFrame {
         jInternalFrameListaDeputados.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(580, 0, 40, 40);
 
-        jButtonDetalhes.setText("Detalhes");
-        jButtonDetalhes.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorio.png"))); // NOI18N
+        jButtonRelatorio.setToolTipText("Mostrar relatorio do deputado");
+        jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDetalhesActionPerformed(evt);
+                jButtonRelatorioActionPerformed(evt);
             }
         });
-        jInternalFrameListaDeputados.getContentPane().add(jButtonDetalhes);
-        jButtonDetalhes.setBounds(10, 20, 90, 29);
+        jInternalFrameListaDeputados.getContentPane().add(jButtonRelatorio);
+        jButtonRelatorio.setBounds(0, 0, 60, 70);
 
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/debate.jpg"))); // NOI18N
         jInternalFrameListaDeputados.getContentPane().add(jLabelFundo);
@@ -91,12 +111,58 @@ public class ListaDeputados extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
-    private void jButtonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesActionPerformed
-        DetalhesDeputados detalhes = new DetalhesDeputados();
-        detalhes.setVisible(true);
+    private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
+        RelatorioDeputados relatorio = new RelatorioDeputados();
+        relatorio.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButtonDetalhesActionPerformed
+    }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        pesquisa.setPesquisar(jTextFieldPesquisar.getText());
+
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    public void preencherTabela(List<Deputado> deputados){
+        
+        //ModeloTabela tabela = ControleTabela.criarTabelaDeputado(deputados);
+        
+        ArrayList linhasDeDados = new ArrayList();
+        String[] colunas = new String[]{"Nome", "Partido", "Estado", "Email", "Telefone", "Condição"};
+        
+        for(Deputado deputado: deputados){
+            linhasDeDados.add(new Object[]{deputado.getNome(),deputado.getPartido(),
+                                           deputado.getUf(), deputado.getEmail(),
+                                           deputado.getFone(), deputado.getCondicao()});
+        }
+        
+        ModeloTabela tabela = new ModeloTabela(linhasDeDados, colunas);
+        
+        //Vamos inserir o modelo de tabela criado na tabela da interface
+        jTableListaDeputados.setModel(tabela);
+        //getColumnModel = Dentro do campos de colunas
+        //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "ID"
+        //setPreferredWidth(250) = Largura da coluna será 250
+        //setResizable(false) = usuario não vai poder mexer no tamanho da coluna
+        jTableListaDeputados.getColumnModel().getColumn(0).setPreferredWidth(250);
+        jTableListaDeputados.getColumnModel().getColumn(0).setResizable(false);
+        jTableListaDeputados.getColumnModel().getColumn(1).setPreferredWidth(40);
+        jTableListaDeputados.getColumnModel().getColumn(1).setResizable(false);
+        jTableListaDeputados.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableListaDeputados.getColumnModel().getColumn(2).setResizable(false);
+        jTableListaDeputados.getColumnModel().getColumn(3).setPreferredWidth(250);
+        jTableListaDeputados.getColumnModel().getColumn(3).setResizable(false);
+        jTableListaDeputados.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jTableListaDeputados.getColumnModel().getColumn(4).setResizable(false);
+        jTableListaDeputados.getColumnModel().getColumn(5).setPreferredWidth(100);
+        jTableListaDeputados.getColumnModel().getColumn(5).setResizable(false);
+        //getTableHeader() = pegar o cabeçalho da tabela
+        //setReorderingAllowed(false) = usuario não irá poder reorganizar o cabeçalho da tabela
+        jTableListaDeputados.getTableHeader().setReorderingAllowed(false);
+         //A tabela não poderá ser redimensionada
+        jTableListaDeputados.setAutoResizeMode(jTableListaDeputados.AUTO_RESIZE_OFF);
+        //Usuario só vai poder selecionar um dado da nossa tabela por vez
+        jTableListaDeputados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -122,7 +188,7 @@ public class ListaDeputados extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -132,9 +198,9 @@ public class ListaDeputados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonDetalhes;
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonPesquisar;
+    private javax.swing.JButton jButtonRelatorio;
     private javax.swing.JComboBox jComboBoxOrdem;
     private javax.swing.JInternalFrame jInternalFrameListaDeputados;
     private javax.swing.JLabel jLabelFundo;

@@ -1,43 +1,4 @@
-
-### Arquivos
-
-	libs - bibliotecas
-		ext - bibliotecas de apoio
-		dadosabertos - biblioteca principal
-	source - Código fonte da biblitoca
-	docs - documentação (HTML)
-
-### Incluindo as bibliotecas no projeto
-
-Você tem duas opções:
-1) Colocar os JARs (tanto de ext quando de dadosabertos) no classpath da tua aplicação
-   e usar as classes.
-2) Usar os códigos fonte (respeitando a hierarquia de pacotes) e colocar os JARs que estão
-   em 'ext' no classpath.
-
-### Utilizando a API
-
-1) Cria um objeto câmara
-Camara camara = new Camara();
-
-2) Obtenha os dados do site do congresso
-camara.obterDados();
-
-3) Carregue a lista de deputados
-List<Deputado> deputados = camara.getDeputados();
-
-4) Agora é possível ver os dados dos deputados
-Deputado deputado = deputados.get(0);
-deputado.getNome();
-deputado.getEmail();
-
-5) Antes de pegar os detalhes do deputado, é necessário baixar esses dados do site do congresso
-deputado.obterDetalhes();
-
-6) Depois disso é possível usar os detalhes
-Detalhes detalhes = deputado.getDetalhes();
-Partido partido = detalhes.getPartido();
-partido.getSigla();
-
-### Repositório
-O repositório da API pode ser encontrado em https://github.com/msramos/dadosabertosAPI
+Para executar o programa, compile ele no NetBeans adicionando todas a bibliotecas da pasta lib
+execute o programa TelaLogin.java e insira:
+Usuario: admin
+Senha: 1234

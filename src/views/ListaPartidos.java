@@ -1,9 +1,27 @@
 package views;
 
-public class ListaPartidos extends javax.swing.JFrame {
+import controllers.ControleTabela;
+import controllers.ObterDados;
+import edu.unb.fga.dadosabertos.Camara;
+import edu.unb.fga.dadosabertos.Deputado;
+import edu.unb.fga.dadosabertos.Detalhes;
+import edu.unb.fga.dadosabertos.Partido;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.xml.bind.JAXBException;
+import models.ModeloTabela;
 
+public class ListaPartidos extends javax.swing.JFrame {  
+    
+      Camara camara = new Camara();
+      List<Deputado> deputados = camara.getDeputados();
+    
     public ListaPartidos() {
         initComponents();
+        //preencherTabela(deputados);
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +100,30 @@ public class ListaPartidos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
+    public void preencherTabela(List<Deputado> deputados){
+        
+        ModeloTabela tabela = ControleTabela.criarTabelaPartido(deputados);
+        
+        jTableListarPartidos.setModel(tabela);
+        //getColumnModel = Dentro do campos de colunas
+        //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "ID"
+        //setPreferredWidth(23) = Largura da coluna será 23
+        //setResizable(false) = usuario não vai poder mexer no tamanho da coluna
+        jTableListarPartidos.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTableListarPartidos.getColumnModel().getColumn(0).setResizable(false);
+        jTableListarPartidos.getColumnModel().getColumn(1).setPreferredWidth(80);
+        jTableListarPartidos.getColumnModel().getColumn(1).setResizable(false);
+        jTableListarPartidos.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTableListarPartidos.getColumnModel().getColumn(2).setResizable(false);
+        //getTableHeader() = pegar o cabeçalho da tabela
+        //setReorderingAllowed(false) = usuario não irá poder reorganizar o cabeçalho da tabela
+        jTableListarPartidos.getTableHeader().setReorderingAllowed(false);
+         //A tabela não poderá ser redimensionada
+        jTableListarPartidos.setAutoResizeMode(jTableListarPartidos.AUTO_RESIZE_OFF);
+        //Usuario só vai poder selecionar um dado da nossa tabela por vez
+        jTableListarPartidos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -105,7 +147,10 @@ public class ListaPartidos extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ListaPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        ObterDados dados = new ObterDados(1);
+        dados.start();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

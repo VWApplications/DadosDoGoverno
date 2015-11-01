@@ -2,4 +2,19 @@ Model = objetos do trabalho, onde está as informações
 Controller = classes que faz acesso as informações do programa
 view = interface grafica, vizualização
 
-add bibliotecas no projeto = buid tag
+Gerar tabelas com os dados
+Fazer métodos de pesquisa e filtro
+Fazer contagem de componentes por partido
+
+Ideia
+- Criar uma interface de login que da acesso a Janela Principal = OK
+- Na Janela Principal criar botões de acessoa a Lista de deputados e Lista de partidos = OK
+- Preencher a tabela com os dados abertos do governo na lista de deputados e partidos
+- Na Lista de deputados ao escrever o nome de um deputado e clicar em pesquisar apareça o deputado na lista de deputados
+	* Se não clicar em nada aparecer a lista completa de deputados
+- Na Lista de deputados ao clicar em ordenar por partido ou por nome a tabela fica na ordem desejada
+- Na lista de deputados ao selecionar um deputado na tabela e clicar na lista de relatorio, 
+	* Aparecer a Janela de Relatorios com todos os dados do deputado
+- Na lista de Relatorio ao clicar em mais informações aparece a janela de Detalhes com mais informações do deputado e sua foto
+- Tenta fazer de um jeito que o usuario só possa executar a tela de login
+

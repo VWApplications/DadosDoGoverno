@@ -1,6 +1,8 @@
 
 package views;
 
+import controllers.ObterDados;
+
 public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
@@ -26,6 +28,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemListaPartidos = new javax.swing.JMenuItem();
         jMenuFerramentas = new javax.swing.JMenu();
         jMenuItemBemVindo = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -122,6 +125,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuFerramentas.add(jMenuItemBemVindo);
 
+        jMenuItem1.setText("Logout");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuFerramentas.add(jMenuItem1);
+
         jMenuBar.add(jMenuFerramentas);
 
         jMenuSair.setText("Sair");
@@ -170,6 +181,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         listaP.setVisible(true);
     }//GEN-LAST:event_jMenuItemListaPartidosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaLogin login = new TelaLogin();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -194,6 +211,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        ObterDados dados = new ObterDados(1);
+        dados.start();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -214,6 +234,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTelaInternalFrame;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenu jMenuFerramentas;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemBemVindo;
     private javax.swing.JMenuItem jMenuItemListaDeputados;
     private javax.swing.JMenuItem jMenuItemListaPartidos;
