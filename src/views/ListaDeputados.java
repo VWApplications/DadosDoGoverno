@@ -1,23 +1,17 @@
 package views;
 
 import controllers.ControleTabela;
-import edu.unb.fga.dadosabertos.Camara;
 import edu.unb.fga.dadosabertos.Deputado;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ListSelectionModel;
+import models.DadosAbertos;
 import models.ModeloTabela;
-import models.ModeloDeputado;
 
-public class ListaDeputados extends javax.swing.JFrame {
-    
-    Camara camara = new Camara();
-    List<Deputado> deputados = camara.getDeputados();
-    ModeloDeputado pesquisa = new ModeloDeputado();
+public class ListaDeputados extends javax.swing.JFrame{
     
     public ListaDeputados() {
         initComponents();
-        //preencherTabela(deputados);
+        preencherTabela(DadosAbertos.getDeputados());
     }
 
     @SuppressWarnings("unchecked")
@@ -118,36 +112,27 @@ public class ListaDeputados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        pesquisa.setPesquisar(jTextFieldPesquisar.getText());
+        
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     public void preencherTabela(List<Deputado> deputados){
         
-        //ModeloTabela tabela = ControleTabela.criarTabelaDeputado(deputados);
+        ModeloTabela tabela = ControleTabela.criarTabela(deputados, 1);
         
-        ArrayList linhasDeDados = new ArrayList();
-        String[] colunas = new String[]{"Nome", "Partido", "Estado", "Email", "Telefone", "Condição"};
-        
-        for(Deputado deputado: deputados){
-            linhasDeDados.add(new Object[]{deputado.getNome(),deputado.getPartido(),
-                                           deputado.getUf(), deputado.getEmail(),
-                                           deputado.getFone(), deputado.getCondicao()});
-        }
-        
-        ModeloTabela tabela = new ModeloTabela(linhasDeDados, colunas);
+        DadosAbertos.setTabela(tabela);
         
         //Vamos inserir o modelo de tabela criado na tabela da interface
         jTableListaDeputados.setModel(tabela);
         //getColumnModel = Dentro do campos de colunas
-        //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "ID"
+        //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "Nome"
         //setPreferredWidth(250) = Largura da coluna será 250
         //setResizable(false) = usuario não vai poder mexer no tamanho da coluna
         jTableListaDeputados.getColumnModel().getColumn(0).setPreferredWidth(250);
         jTableListaDeputados.getColumnModel().getColumn(0).setResizable(false);
-        jTableListaDeputados.getColumnModel().getColumn(1).setPreferredWidth(40);
+        jTableListaDeputados.getColumnModel().getColumn(1).setPreferredWidth(60);
         jTableListaDeputados.getColumnModel().getColumn(1).setResizable(false);
-        jTableListaDeputados.getColumnModel().getColumn(2).setPreferredWidth(40);
+        jTableListaDeputados.getColumnModel().getColumn(2).setPreferredWidth(60);
         jTableListaDeputados.getColumnModel().getColumn(2).setResizable(false);
         jTableListaDeputados.getColumnModel().getColumn(3).setPreferredWidth(250);
         jTableListaDeputados.getColumnModel().getColumn(3).setResizable(false);
@@ -163,39 +148,6 @@ public class ListaDeputados extends javax.swing.JFrame {
         //Usuario só vai poder selecionar um dado da nossa tabela por vez
         jTableListaDeputados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaDeputados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaDeputados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaDeputados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaDeputados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListaDeputados().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFechar;
@@ -208,4 +160,5 @@ public class ListaDeputados extends javax.swing.JFrame {
     private javax.swing.JTable jTableListaDeputados;
     private javax.swing.JTextField jTextFieldPesquisar;
     // End of variables declaration//GEN-END:variables
+
 }

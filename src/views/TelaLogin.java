@@ -1,9 +1,17 @@
 package views;
 
+import edu.unb.fga.dadosabertos.Camara;
+import edu.unb.fga.dadosabertos.Deputado;
+import java.io.IOException;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.xml.bind.JAXBException;
+import models.DadosAbertos;
 
 public class TelaLogin extends javax.swing.JFrame {
 
+    static List<Deputado> deputados;
+    
     public TelaLogin() {
         initComponents();
     }
@@ -126,6 +134,16 @@ public class TelaLogin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        Camara camara = new Camara();
+        try {
+            camara.obterDados();
+        } catch (JAXBException | IOException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na obtenção dos dados!\nErro:" + ex.getMessage());
+        }
+        deputados = camara.getDeputados();
+        
+        DadosAbertos.setDeputados(deputados);
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

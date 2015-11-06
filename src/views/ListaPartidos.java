@@ -1,27 +1,17 @@
 package views;
 
 import controllers.ControleTabela;
-import controllers.ObterDados;
-import edu.unb.fga.dadosabertos.Camara;
 import edu.unb.fga.dadosabertos.Deputado;
-import edu.unb.fga.dadosabertos.Detalhes;
-import edu.unb.fga.dadosabertos.Partido;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.xml.bind.JAXBException;
+import models.DadosAbertos;
 import models.ModeloTabela;
 
 public class ListaPartidos extends javax.swing.JFrame {  
     
-      Camara camara = new Camara();
-      List<Deputado> deputados = camara.getDeputados();
-    
     public ListaPartidos() {
         initComponents();
-        //preencherTabela(deputados);
+        preencherTabela(DadosAbertos.getDeputados());
     }
 
     @SuppressWarnings("unchecked")
@@ -62,7 +52,7 @@ public class ListaPartidos extends javax.swing.JFrame {
         jScrollPaneListarPartidos.setViewportView(jTableListarPartidos);
 
         jInternalFrameListaPartidos.getContentPane().add(jScrollPaneListarPartidos);
-        jScrollPaneListarPartidos.setBounds(0, 252, 620, 200);
+        jScrollPaneListarPartidos.setBounds(140, 260, 330, 150);
         jInternalFrameListaPartidos.getContentPane().add(jTextFieldPesquisa);
         jTextFieldPesquisa.setBounds(200, 150, 220, 27);
 
@@ -90,7 +80,7 @@ public class ListaPartidos extends javax.swing.JFrame {
         jLabelFundo.setBounds(0, 0, 620, 450);
 
         getContentPane().add(jInternalFrameListaPartidos);
-        jInternalFrameListaPartidos.setBounds(0, 0, 630, 480);
+        jInternalFrameListaPartidos.setBounds(0, 0, 630, 490);
 
         pack();
         setLocationRelativeTo(null);
@@ -102,18 +92,18 @@ public class ListaPartidos extends javax.swing.JFrame {
 
     public void preencherTabela(List<Deputado> deputados){
         
-        ModeloTabela tabela = ControleTabela.criarTabelaPartido(deputados);
+        ModeloTabela tabela = ControleTabela.criarTabela(deputados,3);
         
         jTableListarPartidos.setModel(tabela);
         //getColumnModel = Dentro do campos de colunas
         //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "ID"
         //setPreferredWidth(23) = Largura da coluna será 23
         //setResizable(false) = usuario não vai poder mexer no tamanho da coluna
-        jTableListarPartidos.getColumnModel().getColumn(0).setPreferredWidth(40);
+        jTableListarPartidos.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTableListarPartidos.getColumnModel().getColumn(0).setResizable(false);
-        jTableListarPartidos.getColumnModel().getColumn(1).setPreferredWidth(80);
+        jTableListarPartidos.getColumnModel().getColumn(1).setPreferredWidth(60);
         jTableListarPartidos.getColumnModel().getColumn(1).setResizable(false);
-        jTableListarPartidos.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jTableListarPartidos.getColumnModel().getColumn(2).setPreferredWidth(250);
         jTableListarPartidos.getColumnModel().getColumn(2).setResizable(false);
         //getTableHeader() = pegar o cabeçalho da tabela
         //setReorderingAllowed(false) = usuario não irá poder reorganizar o cabeçalho da tabela
@@ -122,41 +112,6 @@ public class ListaPartidos extends javax.swing.JFrame {
         jTableListarPartidos.setAutoResizeMode(jTableListarPartidos.AUTO_RESIZE_OFF);
         //Usuario só vai poder selecionar um dado da nossa tabela por vez
         jTableListarPartidos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    }
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaPartidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        ObterDados dados = new ObterDados(1);
-        dados.start();
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListaPartidos().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
