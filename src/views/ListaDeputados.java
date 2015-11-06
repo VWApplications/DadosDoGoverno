@@ -1,20 +1,17 @@
 package views;
 
-import controllers.ControleTabela;
-import edu.unb.fga.dadosabertos.Deputado;
-import java.util.List;
 import javax.swing.ListSelectionModel;
 import models.DadosAbertos;
 import models.ModeloTabela;
 
 public class ListaDeputados extends javax.swing.JFrame{
     
-    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
-           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    public String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
+                  gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
     
     public ListaDeputados() {
         initComponents();
-        preencherTabela(DadosAbertos.getDeputados());
+        preencherTabela();
     }
 
     @SuppressWarnings("unchecked")
@@ -149,14 +146,12 @@ public class ListaDeputados extends javax.swing.JFrame{
          numeroLegislatura = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 17);        
     }//GEN-LAST:event_jTableListaDeputadosMouseClicked
 
-    public void preencherTabela(List<Deputado> deputados){
+    public void preencherTabela(){
         
-        ModeloTabela tabela = ControleTabela.criarTabela(deputados, 2);
-        
-        DadosAbertos.setTabela(tabela);
+        ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
         
         //Vamos inserir o modelo de tabela criado na tabela da interface
-        jTableListaDeputados.setModel(tabela);
+        jTableListaDeputados.setModel(tabelaDeputados);
         //getColumnModel = Dentro do campos de colunas
         //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "Nome"
         //setPreferredWidth(250) = Largura da coluna será 250

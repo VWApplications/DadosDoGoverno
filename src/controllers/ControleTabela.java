@@ -14,7 +14,8 @@ import models.ModeloTabela;
 public class ControleTabela {
     
 
-    public static ModeloTabela criarTabela(List<Deputado> deputados, int opcao){
+    public static /*ModeloTabela*/ void criarTabela(List<Deputado> deputados/*, int opcao*/){
+            
         ArrayList linhasDeDadosDeputados = new ArrayList();
         ArrayList linhasDeDadosDetalhes = new ArrayList();
         ArrayList linhasDeDadosPartidos = new ArrayList();
@@ -25,20 +26,8 @@ public class ControleTabela {
                                                 "Data de nascimento", "Data de falecimento", "Número de legislatura"};
         String[] colunasPartidos = new String[]{"ID", "Sigla", "Nome"};
         
-        if(opcao == 1){
             for(Deputado deputado: deputados){
-                linhasDeDadosDeputados.add(new Object[]{deputado.getNome(),deputado.getPartido(),
-                                               deputado.getUf(), deputado.getEmail(), deputado.getFone(),
-                                               deputado.getCondicao()});
-                
-            }
-            ModeloTabela tabelaDeputados = new ModeloTabela(linhasDeDadosDeputados, colunasDeputados);
-            DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
-            return tabelaDeputados;
-        }
-        
-        if(opcao == 2){
-            for(Deputado deputado: deputados){              
+
                 try {
                     deputado.obterDetalhes();
                     System.out.print("|");
@@ -55,34 +44,29 @@ public class ControleTabela {
                                                deputado.getAnexo(), deputado.getUrlFoto(), detalhes.getUfRepresentacaoAtual(),
                                                detalhes.getSituacaoNaLegislaturaAtual(), detalhes.getDataNascimento(), 
                                                detalhes.getDataFalecimento(), detalhes.getNumLegislatura()});  
-            }
-            ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
-            DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
-            DadosAbertos.setLinhasDeDadosDetalhes(linhasDeDadosDetalhes);
-            return tabelaDetalhes;
-        }
-        
-        if(opcao == 3){
-            
-            for(Deputado deputado: deputados){    
-               
-                try {
-                    deputado.obterDetalhes();
-                    System.out.print("|");
-                } catch (IOException | JAXBException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro na obtenção dos detalhes");
-                }
-                Detalhes detalhes = deputado.getDetalhes();
+                
                 Partido partidos = detalhes.getPartido();
 
                 linhasDeDadosPartidos.add(new Object[]{partidos.getIdPartido(),
                                                        partidos.getSigla(),
                                                        partidos.getNome()});
             }           
-            ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
+            
+            DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
+            DadosAbertos.setLinhasDeDadosDetalhes(linhasDeDadosDetalhes);
             DadosAbertos.setLinhasDeDadosPartidos(linhasDeDadosPartidos);
-            return tabelaPartidos;
-        }
-        return null;
+            ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
+            DadosAbertos.setTabelaDeputados(tabelaDetalhes);
+            ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
+            DadosAbertos.setTabelaPartidos(tabelaPartidos);
+            
+            /*if(opcao == 1){
+                ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
+                return tabelaDetalhes;
+            }else if(opcao == 2){
+                ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
+                return tabelaPartidos;
+            }*/
+        //return null;
     }
 }

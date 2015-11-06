@@ -1,8 +1,10 @@
 package views;
 
+import controllers.ControleTabela;
 import edu.unb.fga.dadosabertos.Camara;
 import edu.unb.fga.dadosabertos.Deputado;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBException;
@@ -15,7 +17,6 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,6 +31,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelUnB = new javax.swing.JLabel();
         jLabelBrasil = new javax.swing.JLabel();
         jLabelBrasil2 = new javax.swing.JLabel();
+        jProgressBar = new javax.swing.JProgressBar();
+        jLabelBarra = new javax.swing.JLabel();
         JLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -89,6 +92,17 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jLabelBrasil2);
         jLabelBrasil2.setBounds(30, 30, 50, 40);
 
+        jProgressBar.setStringPainted(true);
+        getContentPane().add(jProgressBar);
+        jProgressBar.setBounds(20, 310, 610, 22);
+
+        jLabelBarra.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jLabelBarra.setForeground(java.awt.Color.white);
+        jLabelBarra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBarra.setText("Bem vindo");
+        getContentPane().add(jLabelBarra);
+        jLabelBarra.setBounds(19, 340, 610, 21);
+
         JLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/telaDeFundo1.jpg"))); // NOI18N
         getContentPane().add(JLabelFundo);
         JLabelFundo.setBounds(0, 0, 670, 370);
@@ -100,11 +114,52 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void JButtonAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAcessarActionPerformed
         if(jTextFieldUsuario.getText().equals("admin") && jPasswordFieldSenha.getText().equals("1234")){
-            TelaPrincipal tela = new TelaPrincipal();
-            tela.setVisible(true);
-            dispose();
+            new Thread(){
+                public void run(){
+                    //Enquanto a barra for menor que 101 ela vai carregar, ir até 100% da barra
+                    for(int i=0; i<101; i++){
+                        try{
+                            //Ver a velocidade com que a barra de progresso irá andar, menor o valor mais rapido, 1000 = 1s de atraso a cada 1%
+                            sleep(3200);
+                            jProgressBar.setValue(i);
+                            if(jProgressBar.getValue() <= 10){
+                                jLabelBarra.setText("Carregando Sistema...");
+                            }else if(jProgressBar.getValue() <= 25){
+                                jLabelBarra.setText("carregando Banco de dados...");
+                            }else if(jProgressBar.getValue() <= 95){
+                                jLabelBarra.setText("Adquirindo dados...");
+                            }else{
+                                jLabelBarra.setText("Abrindo Tela Principal...");
+                            }
+                        }catch(InterruptedException erro){
+                            JOptionPane.showMessageDialog(null, "Erro ao carregar o banco de dados!\nErro: "+erro.getMessage());
+                        }
+                    }
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.setVisible(true);
+                    dispose();
+                }
+            }.start();
+            new Thread(){
+                public void run(){
+                Camara camara = new Camara();
+                try {
+                    camara.obterDados();
+                } catch (JAXBException | IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro na obtenção dos dados!\nErro:" + ex.getMessage());
+                }
+                deputados = camara.getDeputados();
+
+                DadosAbertos.setDeputados(deputados);
+                
+                ControleTabela controle = new ControleTabela();
+                controle.criarTabela(deputados);
+                }
+            }.start();          
+            JButtonAcessar.setEnabled(false);
         }else{
             JOptionPane.showMessageDialog(rootPane, "Senha ou Usuário invalidos!");
+            jPasswordFieldSenha.setText("");
         }
     }//GEN-LAST:event_JButtonAcessarActionPerformed
 
@@ -134,7 +189,7 @@ public class TelaLogin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        Camara camara = new Camara();
+        /*Camara camara = new Camara();
         try {
             camara.obterDados();
         } catch (JAXBException | IOException ex) {
@@ -142,7 +197,8 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         deputados = camara.getDeputados();
         
-        DadosAbertos.setDeputados(deputados);
+        DadosAbertos.setDeputados(deputados);*/
+        
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -156,12 +212,14 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton JButtonAcessar;
     private javax.swing.JButton JButtonSair;
     private javax.swing.JLabel JLabelFundo;
+    private javax.swing.JLabel jLabelBarra;
     private javax.swing.JLabel jLabelBrasil;
     private javax.swing.JLabel jLabelBrasil2;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUnB;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPasswordField jPasswordFieldSenha;
+    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }

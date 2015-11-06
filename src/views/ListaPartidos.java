@@ -1,8 +1,5 @@
 package views;
 
-import controllers.ControleTabela;
-import edu.unb.fga.dadosabertos.Deputado;
-import java.util.List;
 import javax.swing.ListSelectionModel;
 import models.DadosAbertos;
 import models.ModeloTabela;
@@ -11,7 +8,7 @@ public class ListaPartidos extends javax.swing.JFrame {
     
     public ListaPartidos() {
         initComponents();
-        preencherTabela(DadosAbertos.getDeputados());
+        preencherTabela();
     }
 
     @SuppressWarnings("unchecked")
@@ -90,11 +87,11 @@ public class ListaPartidos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
-    public void preencherTabela(List<Deputado> deputados){
+    public void preencherTabela(){
         
-        ModeloTabela tabela = ControleTabela.criarTabela(deputados,3);
+        ModeloTabela tabelaPartidos = DadosAbertos.getTabelaPartidos();
         
-        jTableListarPartidos.setModel(tabela);
+        jTableListarPartidos.setModel(tabelaPartidos);
         //getColumnModel = Dentro do campos de colunas
         //getColumn(0) = primeiro registro, os arrays começam a contar do zero que é o "ID"
         //setPreferredWidth(23) = Largura da coluna será 23

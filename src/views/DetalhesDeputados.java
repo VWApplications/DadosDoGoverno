@@ -8,12 +8,9 @@ import javax.swing.JOptionPane;
 
 public class DetalhesDeputados extends javax.swing.JFrame {
     
-    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
-           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    String linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
     
-    public DetalhesDeputados(String nome, String partido, String estado, String email, String telefone, String condicao,
-                             String sexo, String IDCadastro, String matricula, String nomeParlamentar,
-                             String gabinete, String anexo, String linkFoto, String UF, String legislatura,
+    public DetalhesDeputados(String linkFoto, String UF, String legislatura,
                              String dataNascimento, String dataMorte, String numeroLegislatura) {
         initComponents();
         jTextFieldUFRepresentacaoAtual.setText(UF);
@@ -21,18 +18,7 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jTextFieldDataNascimento.setText(dataNascimento);
         jTextFieldDataFalecimento.setText(dataMorte);
         jTextFieldNumeroLegislatura.setText(numeroLegislatura);
-        this.nome = nome;
-        this.partido = partido;
-        this.estado = estado;
-        this.email = email;
-        this.telefone = telefone;
-        this.condicao = condicao;
-        this.sexo = sexo;
-        this.IDCadastro = IDCadastro;
-        this.matricula = matricula;
-        this.nomeParlamentar = nomeParlamentar;
-        this.gabinete = gabinete;
-        this.anexo = anexo;
+        this.linkFoto = linkFoto;
         
         //FOTO
         try {
@@ -64,11 +50,10 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jLabelNumeroLegislatura = new javax.swing.JLabel();
         jTextFieldNumeroLegislatura = new javax.swing.JTextField();
         jPanelFoto = new javax.swing.JPanel();
+        jLabelFOTO = new javax.swing.JLabel();
         jLabelFoto = new javax.swing.JLabel();
         jButtonFechar = new javax.swing.JButton();
-        jButtonVoltar = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
-        jLabelFOTO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(740, 500));
@@ -130,25 +115,19 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jTextFieldNumeroLegislatura.setBounds(270, 130, 60, 27);
 
         jPanelFoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelFoto.setLayout(null);
 
-        javax.swing.GroupLayout jPanelFotoLayout = new javax.swing.GroupLayout(jPanelFoto);
-        jPanelFoto.setLayout(jPanelFotoLayout);
-        jPanelFotoLayout.setHorizontalGroup(
-            jPanelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
-        );
-        jPanelFotoLayout.setVerticalGroup(
-            jPanelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 146, Short.MAX_VALUE)
-        );
+        jLabelFOTO.setToolTipText("Foto do deputado");
+        jPanelFoto.add(jLabelFOTO);
+        jLabelFOTO.setBounds(0, 0, 120, 150);
 
         jPanelDetalhes.add(jPanelFoto);
-        jPanelFoto.setBounds(270, 220, 160, 150);
+        jPanelFoto.setBounds(300, 220, 110, 150);
 
         jLabelFoto.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
         jLabelFoto.setText("FOTO");
         jPanelDetalhes.add(jLabelFoto);
-        jLabelFoto.setBounds(300, 160, 110, 40);
+        jLabelFoto.setBounds(300, 170, 110, 40);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
         jButtonFechar.setToolTipText("Fechar");
@@ -160,23 +139,9 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jPanelDetalhes.add(jButtonFechar);
         jButtonFechar.setBounds(700, 0, 40, 40);
 
-        jButtonVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/voltar1.png"))); // NOI18N
-        jButtonVoltar.setToolTipText("Voltar ao relatorio");
-        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVoltarActionPerformed(evt);
-            }
-        });
-        jPanelDetalhes.add(jButtonVoltar);
-        jButtonVoltar.setBounds(660, 0, 40, 40);
-
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/telaDeFundo5.jpg"))); // NOI18N
         jPanelDetalhes.add(jLabelFundo);
         jLabelFundo.setBounds(0, 0, 740, 500);
-
-        jLabelFOTO.setToolTipText("Foto do deputado");
-        jPanelDetalhes.add(jLabelFOTO);
-        jLabelFOTO.setBounds(270, 220, 161, 146);
 
         getContentPane().add(jPanelDetalhes);
         jPanelDetalhes.setBounds(0, 0, 740, 500);
@@ -189,18 +154,8 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
-    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados(nome, partido, estado, email, telefone, condicao,
-                                                              sexo, IDCadastro, matricula, nomeParlamentar,
-                                                              gabinete, anexo, linkFoto, UF, legislatura,
-                                                              dataNascimento, dataMorte, numeroLegislatura);
-        relatorio.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButtonVoltarActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFechar;
-    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelDataFalecimento;
     private javax.swing.JLabel jLabelDataNascimento;
     private javax.swing.JLabel jLabelFOTO;

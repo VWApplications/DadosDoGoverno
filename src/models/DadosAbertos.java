@@ -20,20 +20,30 @@ public class DadosAbertos {
     public static ArrayList linhasDeDadosDetalhes;
     public static ArrayList linhasDeDadosPartidos;
     public static List<Deputado> deputados;
-    public static ModeloTabela tabela;
+    public static ModeloTabela tabelaDeputados;
+    public static ModeloTabela tabelaPartidos;
     public String pesquisarDeputados;
 
     public DadosAbertos(){
         
     }
 
-    public static ModeloTabela getTabela() {
-        return tabela;
+    public static ModeloTabela getTabelaDeputados() {
+        return tabelaDeputados;
     }
 
-    public static void setTabela(ModeloTabela tabela) {
-        DadosAbertos.tabela = tabela;
+    public static void setTabelaDeputados(ModeloTabela tabelaDeputados) {
+        DadosAbertos.tabelaDeputados = tabelaDeputados;
     }
+
+    public static ModeloTabela getTabelaPartidos() {
+        return tabelaPartidos;
+    }
+
+    public static void setTabelaPartidos(ModeloTabela tabelaPartidos) {
+        DadosAbertos.tabelaPartidos = tabelaPartidos;
+    }
+
 
     public static List<Deputado> getDeputados() {
         return deputados;

@@ -2,8 +2,7 @@ package views;
 
 public class RelatorioDeputados extends javax.swing.JFrame {
     
-    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
-           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    String linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
     
     public RelatorioDeputados(String nome, String partido, String estado, String email, String telefone, String condicao,
                               String sexo, String IDCadastro, String matricula, String nomeParlamentar,
@@ -277,12 +276,9 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeParlamentarActionPerformed
 
     private void jButtonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesActionPerformed
-        DetalhesDeputados detalhes = new DetalhesDeputados(nome, partido, estado, email, telefone, condicao,
-                                                           sexo, IDCadastro, matricula, nomeParlamentar,
-                                                           gabinete, anexo, linkFoto, UF, legislatura,
-                                                           dataNascimento, dataMorte, numeroLegislatura);
+        DetalhesDeputados detalhes = new DetalhesDeputados(linkFoto, UF, legislatura, dataNascimento,
+                                                           dataMorte, numeroLegislatura);
         detalhes.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButtonDetalhesActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
