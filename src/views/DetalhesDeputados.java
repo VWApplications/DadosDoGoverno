@@ -1,15 +1,51 @@
 package views;
 
-import models.DadosAbertos;
-import models.ModeloTabela;
+import java.awt.MediaTracker;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class DetalhesDeputados extends javax.swing.JFrame {
-
-    ModeloTabela tabela = DadosAbertos.getTabela();
     
-    public DetalhesDeputados() {
+    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
+           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    
+    public DetalhesDeputados(String nome, String partido, String estado, String email, String telefone, String condicao,
+                             String sexo, String IDCadastro, String matricula, String nomeParlamentar,
+                             String gabinete, String anexo, String linkFoto, String UF, String legislatura,
+                             String dataNascimento, String dataMorte, String numeroLegislatura) {
         initComponents();
-        //Object detalhe = tabela.getValueAt();
+        jTextFieldUFRepresentacaoAtual.setText(UF);
+        jTextFieldSituacaoLegislatura.setText(legislatura);
+        jTextFieldDataNascimento.setText(dataNascimento);
+        jTextFieldDataFalecimento.setText(dataMorte);
+        jTextFieldNumeroLegislatura.setText(numeroLegislatura);
+        this.nome = nome;
+        this.partido = partido;
+        this.estado = estado;
+        this.email = email;
+        this.telefone = telefone;
+        this.condicao = condicao;
+        this.sexo = sexo;
+        this.IDCadastro = IDCadastro;
+        this.matricula = matricula;
+        this.nomeParlamentar = nomeParlamentar;
+        this.gabinete = gabinete;
+        this.anexo = anexo;
+        
+        //FOTO
+        try {
+            // inicializa a imagem URL dentro de um objeto ImageIcon
+            URL imagem = new URL(linkFoto);
+            ImageIcon img = new ImageIcon(imagem);
+            // faz o preload da imagem
+            while(img.getImageLoadStatus() == MediaTracker.LOADING);
+            // injeta o icone no label
+            jLabelFOTO.setIcon(img);
+        } catch (MalformedURLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao pegar a imagem do URL" + ex.getMessage());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -28,11 +64,11 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jLabelNumeroLegislatura = new javax.swing.JLabel();
         jTextFieldNumeroLegislatura = new javax.swing.JTextField();
         jPanelFoto = new javax.swing.JPanel();
-        jLabelFOTO = new javax.swing.JLabel();
         jLabelFoto = new javax.swing.JLabel();
         jButtonFechar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jLabelFundo = new javax.swing.JLabel();
+        jLabelFOTO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(740, 500));
@@ -95,21 +131,19 @@ public class DetalhesDeputados extends javax.swing.JFrame {
 
         jPanelFoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabelFOTO.setToolTipText("Foto do deputado");
-
         javax.swing.GroupLayout jPanelFotoLayout = new javax.swing.GroupLayout(jPanelFoto);
         jPanelFoto.setLayout(jPanelFotoLayout);
         jPanelFotoLayout.setHorizontalGroup(
             jPanelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelFOTO, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
         jPanelFotoLayout.setVerticalGroup(
             jPanelFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelFOTO, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+            .addGap(0, 146, Short.MAX_VALUE)
         );
 
         jPanelDetalhes.add(jPanelFoto);
-        jPanelFoto.setBounds(160, 200, 400, 250);
+        jPanelFoto.setBounds(270, 220, 160, 150);
 
         jLabelFoto.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
         jLabelFoto.setText("FOTO");
@@ -140,6 +174,10 @@ public class DetalhesDeputados extends javax.swing.JFrame {
         jPanelDetalhes.add(jLabelFundo);
         jLabelFundo.setBounds(0, 0, 740, 500);
 
+        jLabelFOTO.setToolTipText("Foto do deputado");
+        jPanelDetalhes.add(jLabelFOTO);
+        jLabelFOTO.setBounds(270, 220, 161, 146);
+
         getContentPane().add(jPanelDetalhes);
         jPanelDetalhes.setBounds(0, 0, 740, 500);
 
@@ -152,7 +190,10 @@ public class DetalhesDeputados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados();
+        RelatorioDeputados relatorio = new RelatorioDeputados(nome, partido, estado, email, telefone, condicao,
+                                                              sexo, IDCadastro, matricula, nomeParlamentar,
+                                                              gabinete, anexo, linkFoto, UF, legislatura,
+                                                              dataNascimento, dataMorte, numeroLegislatura);
         relatorio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed

@@ -1,6 +1,7 @@
 
 package views;
 
+import javax.swing.JOptionPane;
 import models.DadosAbertos;
 
 public class TelaPrincipal extends javax.swing.JFrame {
@@ -162,22 +163,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemBemVindoActionPerformed
 
     private void jButtonListaDeDeputadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDeDeputadosActionPerformed
-        ListaDeputados2 listaD = new ListaDeputados2(DadosAbertos.getDeputados());
+        JOptionPane.showMessageDialog(null, "A conexão com o banco de dados irá demorar em torno de 5 minutos, aperte OK e aguarde!");
+        ListaDeputados listaD = new ListaDeputados();
         listaD.setVisible(true);
     }//GEN-LAST:event_jButtonListaDeDeputadosActionPerformed
 
     private void jButtonListaDePartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListaDePartidosActionPerformed
+        JOptionPane.showMessageDialog(null, "A conexão com o banco de dados irá demorar em torno de 5 minutos, aperte OK e aguarde!");
         ListaPartidos listaP = new ListaPartidos();
         listaP.setVisible(true);
     }//GEN-LAST:event_jButtonListaDePartidosActionPerformed
 
     private void jMenuItemListaDeputadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaDeputadosActionPerformed
+        JOptionPane.showMessageDialog(null, "A conexão com o banco de dados irá demorar em torno de 5 minutos, aperte OK e aguarde!");
         ListaDeputados listaD = new ListaDeputados();
         listaD.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemListaDeputadosActionPerformed
 
     private void jMenuItemListaPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaPartidosActionPerformed
+        JOptionPane.showMessageDialog(null, "A conexão com o banco de dados irá demorar em torno de 5 minutos, aperte OK e aguarde!");
         ListaPartidos listaP = new ListaPartidos();
         listaP.setVisible(true);
     }//GEN-LAST:event_jMenuItemListaPartidosActionPerformed

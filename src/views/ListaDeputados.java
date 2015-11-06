@@ -9,6 +9,9 @@ import models.ModeloTabela;
 
 public class ListaDeputados extends javax.swing.JFrame{
     
+    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
+           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    
     public ListaDeputados() {
         initComponents();
         preencherTabela(DadosAbertos.getDeputados());
@@ -49,6 +52,11 @@ public class ListaDeputados extends javax.swing.JFrame{
 
             }
         ));
+        jTableListaDeputados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListaDeputadosMouseClicked(evt);
+            }
+        });
         jScrollPaneListaDeputados.setViewportView(jTableListaDeputados);
 
         jInternalFrameListaDeputados.getContentPane().add(jScrollPaneListaDeputados);
@@ -105,8 +113,12 @@ public class ListaDeputados extends javax.swing.JFrame{
         dispose();
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
+    
     private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados();
+        RelatorioDeputados relatorio = new RelatorioDeputados(nome, partido, estado, email, telefone, condicao,
+                                                              sexo, IDCadastro, matricula, nomeParlamentar,
+                                                              gabinete, anexo, linkFoto, UF, legislatura,
+                                                              dataNascimento, dataMorte, numeroLegislatura);
         relatorio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
@@ -116,9 +128,30 @@ public class ListaDeputados extends javax.swing.JFrame{
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
+    private void jTableListaDeputadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaDeputadosMouseClicked
+         nome = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 0);
+         partido = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 1);
+         estado = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 2);
+         email = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 3);
+         telefone = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 4);
+         condicao = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 5);
+         sexo = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 6);
+         IDCadastro = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 7);
+         matricula = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 8);
+         nomeParlamentar = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 9);
+         gabinete = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 10);
+         anexo = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 11);
+         linkFoto = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 12);
+         UF = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 13);
+         legislatura = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 14);
+         dataNascimento = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 15);
+         dataMorte = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 16);
+         numeroLegislatura = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 17);        
+    }//GEN-LAST:event_jTableListaDeputadosMouseClicked
+
     public void preencherTabela(List<Deputado> deputados){
         
-        ModeloTabela tabela = ControleTabela.criarTabela(deputados, 1);
+        ModeloTabela tabela = ControleTabela.criarTabela(deputados, 2);
         
         DadosAbertos.setTabela(tabela);
         

@@ -2,8 +2,32 @@ package views;
 
 public class RelatorioDeputados extends javax.swing.JFrame {
     
-    public RelatorioDeputados() {
+    String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
+           gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    
+    public RelatorioDeputados(String nome, String partido, String estado, String email, String telefone, String condicao,
+                              String sexo, String IDCadastro, String matricula, String nomeParlamentar,
+                              String gabinete, String anexo, String linkFoto, String UF, String legislatura,
+                              String dataNascimento, String dataMorte, String numeroLegislatura) {
         initComponents();
+        jTextFieldNome.setText(nome);
+        jTextFieldPartido.setText(partido);
+        jTextFieldEstado.setText(estado);
+        jTextFieldEmail.setText(email);
+        jTextFieldTelefone.setText(telefone);
+        jTextFieldCondicao.setText(condicao);
+        jTextFieldSexo.setText(sexo);
+        jTextFieldID.setText(IDCadastro);
+        jTextFieldMatricula.setText(matricula);
+        jTextFieldNomeParlamentar.setText(nomeParlamentar);
+        jTextFieldGabinete.setText(gabinete);
+        jTextFieldAnexo.setText(anexo);
+        this.UF = UF;
+        this.linkFoto = linkFoto;
+        this.legislatura = legislatura;
+        this.dataNascimento = dataNascimento;
+        this.dataMorte = dataMorte;
+        this.numeroLegislatura = numeroLegislatura;
     }
 
     @SuppressWarnings("unchecked")
@@ -253,7 +277,10 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeParlamentarActionPerformed
 
     private void jButtonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesActionPerformed
-        DetalhesDeputados detalhes = new DetalhesDeputados();
+        DetalhesDeputados detalhes = new DetalhesDeputados(nome, partido, estado, email, telefone, condicao,
+                                                           sexo, IDCadastro, matricula, nomeParlamentar,
+                                                           gabinete, anexo, linkFoto, UF, legislatura,
+                                                           dataNascimento, dataMorte, numeroLegislatura);
         detalhes.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonDetalhesActionPerformed

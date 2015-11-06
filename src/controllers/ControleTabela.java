@@ -18,15 +18,18 @@ public class ControleTabela {
         ArrayList linhasDeDadosDeputados = new ArrayList();
         ArrayList linhasDeDadosDetalhes = new ArrayList();
         ArrayList linhasDeDadosPartidos = new ArrayList();
-        String[] colunasDeputados = new String[]{"Nome", "Partido", "Estado", "Email", "Telefone", "Condição"};
-        String[] colunasDetalhes = new String[]{"UF", "Legislatura", "Data de nascimento", "Data de falecimento", "Número de legislatura"};
+        String[] colunasDeputados = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",};
+        String[] colunasDetalhes = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",
+                                                "sexo", "ID de cadastro", "Matricula", "Nome Parlamentar", 
+                                                "Gabinete", "Anexo", "Link da foto", "UF", "Legislatura", 
+                                                "Data de nascimento", "Data de falecimento", "Número de legislatura"};
         String[] colunasPartidos = new String[]{"ID", "Sigla", "Nome"};
         
         if(opcao == 1){
             for(Deputado deputado: deputados){
                 linhasDeDadosDeputados.add(new Object[]{deputado.getNome(),deputado.getPartido(),
-                                               deputado.getUf(), deputado.getEmail(),
-                                               deputado.getFone(), deputado.getCondicao()});
+                                               deputado.getUf(), deputado.getEmail(), deputado.getFone(),
+                                               deputado.getCondicao()});
                 
             }
             ModeloTabela tabelaDeputados = new ModeloTabela(linhasDeDadosDeputados, colunasDeputados);
@@ -35,7 +38,7 @@ public class ControleTabela {
         }
         
         if(opcao == 2){
-            for(Deputado deputado: deputados){
+            for(Deputado deputado: deputados){              
                 try {
                     deputado.obterDetalhes();
                     System.out.print("|");
@@ -45,13 +48,16 @@ public class ControleTabela {
                 
                 Detalhes detalhes = deputado.getDetalhes();
                 
-                linhasDeDadosDetalhes.add(new Object[]{detalhes.getUfRepresentacaoAtual(),
-                                                       detalhes.getSituacaoNaLegislaturaAtual(),
-                                                       detalhes.getDataNascimento(),
-                                                       detalhes.getDataFalecimento(),
-                                                       detalhes.getNumLegislatura()});
+                linhasDeDadosDetalhes.add(new Object[]{deputado.getNome(),deputado.getPartido(),
+                                               deputado.getUf(), deputado.getEmail(), deputado.getFone(),
+                                               deputado.getCondicao(), deputado.getSexo(), deputado.getIdeCadastro(),
+                                               deputado.getMatricula(), deputado.getNomeParlamentar(), deputado.getGabinete(),
+                                               deputado.getAnexo(), deputado.getUrlFoto(), detalhes.getUfRepresentacaoAtual(),
+                                               detalhes.getSituacaoNaLegislaturaAtual(), detalhes.getDataNascimento(), 
+                                               detalhes.getDataFalecimento(), detalhes.getNumLegislatura()});  
             }
-            ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDeputados);
+            ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
+            DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
             DadosAbertos.setLinhasDeDadosDetalhes(linhasDeDadosDetalhes);
             return tabelaDetalhes;
         }
