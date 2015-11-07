@@ -1,7 +1,7 @@
 package views;
 
-import controllers.ControleDePesquisa;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableRowSorter;
 import models.DadosAbertos;
 import models.ModeloDeputados;
 import models.ModeloTabela;
@@ -9,7 +9,7 @@ import models.ModeloTabela;
 public class ListaDeputados extends javax.swing.JFrame{
     
     ModeloDeputados deputado = new ModeloDeputados();
-    
+    private TableRowSorter<ModeloTabela> sorter;
     ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
     
     public ListaDeputados() {
@@ -24,12 +24,10 @@ public class ListaDeputados extends javax.swing.JFrame{
         jInternalFrameListaDeputados = new javax.swing.JInternalFrame();
         jScrollPaneListaDeputados = new javax.swing.JScrollPane();
         jTableListaDeputados = new javax.swing.JTable();
-        jComboBoxOrdem = new javax.swing.JComboBox();
         jTextFieldPesquisar = new javax.swing.JTextField();
         jButtonPesquisar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
         jButtonRelatorio = new javax.swing.JButton();
-        jCheckBoxSelecao = new javax.swing.JCheckBox();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -62,10 +60,6 @@ public class ListaDeputados extends javax.swing.JFrame{
 
         jInternalFrameListaDeputados.getContentPane().add(jScrollPaneListaDeputados);
         jScrollPaneListaDeputados.setBounds(0, 262, 620, 190);
-
-        jComboBoxOrdem.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordem Alfabetica", "Ordem por Partido", "Ordem por Estado" }));
-        jInternalFrameListaDeputados.getContentPane().add(jComboBoxOrdem);
-        jComboBoxOrdem.setBounds(190, 20, 260, 27);
         jInternalFrameListaDeputados.getContentPane().add(jTextFieldPesquisar);
         jTextFieldPesquisar.setBounds(200, 150, 220, 27);
 
@@ -89,7 +83,10 @@ public class ListaDeputados extends javax.swing.JFrame{
         jInternalFrameListaDeputados.getContentPane().add(jButtonFechar);
         jButtonFechar.setBounds(580, 0, 40, 40);
 
+        jButtonRelatorio.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonRelatorio.setForeground(java.awt.Color.black);
         jButtonRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorio.png"))); // NOI18N
+        jButtonRelatorio.setText("Relatorio");
         jButtonRelatorio.setToolTipText("Mostrar relatorio do deputado");
         jButtonRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,13 +94,7 @@ public class ListaDeputados extends javax.swing.JFrame{
             }
         });
         jInternalFrameListaDeputados.getContentPane().add(jButtonRelatorio);
-        jButtonRelatorio.setBounds(0, 0, 60, 70);
-
-        jCheckBoxSelecao.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        jCheckBoxSelecao.setForeground(java.awt.Color.white);
-        jCheckBoxSelecao.setText("Em toda parte");
-        jInternalFrameListaDeputados.getContentPane().add(jCheckBoxSelecao);
-        jCheckBoxSelecao.setBounds(450, 160, 140, 24);
+        jButtonRelatorio.setBounds(190, 0, 260, 60);
 
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/debate.jpg"))); // NOI18N
         jInternalFrameListaDeputados.getContentPane().add(jLabelFundo);
@@ -128,9 +119,13 @@ public class ListaDeputados extends javax.swing.JFrame{
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        deputado.setPesquisarDeputados(jTextFieldPesquisar.getText());
-        ModeloTabela tabela = ControleDePesquisa.pesquisarDeputado(deputado);
-        preencherTabela(tabela);
+        //Fazer um filtro na tabela e pegar o valor pesquisado
+        String text = jTextFieldPesquisar.getText().toUpperCase();
+        if(text.length() == 0){
+            sorter.setRowFilter(null);
+        }else{
+            sorter.setRowFilter(javax.swing.RowFilter.regexFilter(text));
+        }
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jTableListaDeputadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaDeputadosMouseClicked
@@ -181,6 +176,11 @@ public class ListaDeputados extends javax.swing.JFrame{
         jTableListaDeputados.setAutoResizeMode(jTableListaDeputados.AUTO_RESIZE_OFF);
         //Usuario só vai poder selecionar um dado da nossa tabela por vez
         jTableListaDeputados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        //Colocar em ordem as colunas
+        sorter = new TableRowSorter<ModeloTabela>(tabelaDeputados);
+        jTableListaDeputados.setRowSorter(sorter);
+        
     }
     
     
@@ -189,8 +189,6 @@ public class ListaDeputados extends javax.swing.JFrame{
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonRelatorio;
-    private javax.swing.JCheckBox jCheckBoxSelecao;
-    private javax.swing.JComboBox jComboBoxOrdem;
     private javax.swing.JInternalFrame jInternalFrameListaDeputados;
     private javax.swing.JLabel jLabelFundo;
     private javax.swing.JScrollPane jScrollPaneListaDeputados;

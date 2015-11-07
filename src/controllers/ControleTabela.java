@@ -46,7 +46,7 @@ public class ControleTabela {
                                                detalhes.getDataFalecimento(), detalhes.getNumLegislatura()});  
                 
                 Partido partidos = detalhes.getPartido();
-
+                
                 linhasDeDadosPartidos.add(new Object[]{partidos.getIdPartido(),
                                                        partidos.getSigla(),
                                                        partidos.getNome()});
@@ -60,5 +60,37 @@ public class ControleTabela {
             ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
             DadosAbertos.setTabelaPartidos(tabelaPartidos);
             
+    }
+    
+    public static ModeloTabela filtrarPartidos(ModeloTabela tabelaPartidos){
+        ModeloTabela tabela = DadosAbertos.getTabelaPartidos();
+        ArrayList<Object> dados = new ArrayList<>();
+        String[] colunas = new String[]{"ID", "Sigla", "Nome"};
+
+            //Add a primeira linha na tabela
+            Object ID1 = tabela.getValueAt(0, 0);
+            Object sigla1 = tabela.getValueAt(0, 1);
+            Object nome1 = tabela.getValueAt(0, 2);
+            dados.add(new Object[]{ID1, sigla1, nome1});
+        
+            //Percorrer todas as linhas da tabela
+            for(int i = 0; i<tabela.getRowCount(); i++){  
+                    //Verificar se o valor da 1°linha e igual ao valor da 2° linha
+                    String IDAtual = (String) tabela.getValueAt(i, 0);
+                    String IDProximo = (String) tabela.getValueAt(i+1, 0);
+                    if(IDAtual.compareToIgnoreCase(IDProximo) == 0){
+                            continue;
+                    }else{
+                            Object ID = tabela.getValueAt(i+1, 0);
+                            Object sigla = tabela.getValueAt(i+1, 1);
+                            Object nome = tabela.getValueAt(i+1, 2);
+                            
+                            
+                            dados.add(new Object[]{ID, sigla, nome});
+                    }
+                    
+            }
+                ModeloTabela Modeltabela = new ModeloTabela(dados, colunas);
+                return Modeltabela;
     }
 }
