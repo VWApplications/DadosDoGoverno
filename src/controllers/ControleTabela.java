@@ -14,7 +14,7 @@ import models.ModeloTabela;
 public class ControleTabela {
     
 
-    public static /*ModeloTabela*/ void criarTabela(List<Deputado> deputados/*, int opcao*/){
+    public static void criarTabela(List<Deputado> deputados){
             
         ArrayList linhasDeDadosDeputados = new ArrayList();
         ArrayList linhasDeDadosDetalhes = new ArrayList();
@@ -60,13 +60,5 @@ public class ControleTabela {
             ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
             DadosAbertos.setTabelaPartidos(tabelaPartidos);
             
-            /*if(opcao == 1){
-                ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
-                return tabelaDetalhes;
-            }else if(opcao == 2){
-                ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
-                return tabelaPartidos;
-            }*/
-        //return null;
     }
 }

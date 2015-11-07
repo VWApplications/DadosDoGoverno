@@ -5,25 +5,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import models.ModeloDeputados;
 
 public class DetalhesDeputados extends javax.swing.JFrame {
     
-    String linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
-    
-    public DetalhesDeputados(String linkFoto, String UF, String legislatura,
-                             String dataNascimento, String dataMorte, String numeroLegislatura) {
+    public DetalhesDeputados(ModeloDeputados deputado) {
         initComponents();
-        jTextFieldUFRepresentacaoAtual.setText(UF);
-        jTextFieldSituacaoLegislatura.setText(legislatura);
-        jTextFieldDataNascimento.setText(dataNascimento);
-        jTextFieldDataFalecimento.setText(dataMorte);
-        jTextFieldNumeroLegislatura.setText(numeroLegislatura);
-        this.linkFoto = linkFoto;
+        jTextFieldUFRepresentacaoAtual.setText(deputado.getUF());
+        jTextFieldSituacaoLegislatura.setText(deputado.getLegislatura());
+        jTextFieldDataNascimento.setText(deputado.getDataNascimento());
+        jTextFieldDataFalecimento.setText(deputado.getDataMorte());
+        jTextFieldNumeroLegislatura.setText(deputado.getNumeroLegislatura());
         
         //FOTO
         try {
             // inicializa a imagem URL dentro de um objeto ImageIcon
-            URL imagem = new URL(linkFoto);
+            URL imagem = new URL(deputado.getLinkFoto());
             ImageIcon img = new ImageIcon(imagem);
             // faz o preload da imagem
             while(img.getImageLoadStatus() == MediaTracker.LOADING);

@@ -1,17 +1,20 @@
 package views;
 
+import controllers.ControleDePesquisa;
 import javax.swing.ListSelectionModel;
 import models.DadosAbertos;
+import models.ModeloDeputados;
 import models.ModeloTabela;
 
 public class ListaDeputados extends javax.swing.JFrame{
     
-    public String nome, partido, estado, email, telefone, condicao, sexo, IDCadastro, matricula, nomeParlamentar,
-                  gabinete, anexo, linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    ModeloDeputados deputado = new ModeloDeputados();
+    
+    ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
     
     public ListaDeputados() {
         initComponents();
-        preencherTabela();
+        preencherTabela(tabelaDeputados);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +29,7 @@ public class ListaDeputados extends javax.swing.JFrame{
         jButtonPesquisar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
         jButtonRelatorio = new javax.swing.JButton();
+        jCheckBoxSelecao = new javax.swing.JCheckBox();
         jLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -95,6 +99,12 @@ public class ListaDeputados extends javax.swing.JFrame{
         jInternalFrameListaDeputados.getContentPane().add(jButtonRelatorio);
         jButtonRelatorio.setBounds(0, 0, 60, 70);
 
+        jCheckBoxSelecao.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        jCheckBoxSelecao.setForeground(java.awt.Color.white);
+        jCheckBoxSelecao.setText("Em toda parte");
+        jInternalFrameListaDeputados.getContentPane().add(jCheckBoxSelecao);
+        jCheckBoxSelecao.setBounds(450, 160, 140, 24);
+
         jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/debate.jpg"))); // NOI18N
         jInternalFrameListaDeputados.getContentPane().add(jLabelFundo);
         jLabelFundo.setBounds(0, -4, 620, 460);
@@ -112,44 +122,40 @@ public class ListaDeputados extends javax.swing.JFrame{
 
     
     private void jButtonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatorioActionPerformed
-        RelatorioDeputados relatorio = new RelatorioDeputados(nome, partido, estado, email, telefone, condicao,
-                                                              sexo, IDCadastro, matricula, nomeParlamentar,
-                                                              gabinete, anexo, linkFoto, UF, legislatura,
-                                                              dataNascimento, dataMorte, numeroLegislatura);
+        RelatorioDeputados relatorio = new RelatorioDeputados(deputado);
         relatorio.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonRelatorioActionPerformed
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
-        
-
+        deputado.setPesquisarDeputados(jTextFieldPesquisar.getText());
+        ModeloTabela tabela = ControleDePesquisa.pesquisarDeputado(deputado);
+        preencherTabela(tabela);
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     private void jTableListaDeputadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaDeputadosMouseClicked
-         nome = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 0);
-         partido = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 1);
-         estado = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 2);
-         email = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 3);
-         telefone = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 4);
-         condicao = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 5);
-         sexo = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 6);
-         IDCadastro = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 7);
-         matricula = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 8);
-         nomeParlamentar = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 9);
-         gabinete = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 10);
-         anexo = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 11);
-         linkFoto = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 12);
-         UF = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 13);
-         legislatura = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 14);
-         dataNascimento = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 15);
-         dataMorte = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 16);
-         numeroLegislatura = ""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 17);        
+         deputado.setNome(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 0));
+         deputado.setPartido(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 1));
+         deputado.setEstado(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 2));
+         deputado.setEmail(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 3));
+         deputado.setTelefone(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 4));
+         deputado.setCondicao(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 5));
+         deputado.setSexo(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 6));
+         deputado.setIDCadastro(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 7));
+         deputado.setMatricula(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 8));
+         deputado.setNomeParlamentar(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 9));
+         deputado.setGabinete(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 10));
+         deputado.setAnexo(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 11));
+         deputado.setLinkFoto(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 12));
+         deputado.setUF(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 13));
+         deputado.setLegislatura(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 14));
+         deputado.setDataNascimento(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 15));
+         deputado.setDataMorte(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 16));
+         deputado.setNumeroLegislatura(""+jTableListaDeputados.getValueAt(jTableListaDeputados.getSelectedRow(), 17));        
     }//GEN-LAST:event_jTableListaDeputadosMouseClicked
 
-    public void preencherTabela(){
-        
-        ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
-        
+    public void preencherTabela(ModeloTabela tabelaDeputados){
+ 
         //Vamos inserir o modelo de tabela criado na tabela da interface
         jTableListaDeputados.setModel(tabelaDeputados);
         //getColumnModel = Dentro do campos de colunas
@@ -176,11 +182,14 @@ public class ListaDeputados extends javax.swing.JFrame{
         //Usuario só vai poder selecionar um dado da nossa tabela por vez
         jTableListaDeputados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JButton jButtonRelatorio;
+    private javax.swing.JCheckBox jCheckBoxSelecao;
     private javax.swing.JComboBox jComboBoxOrdem;
     private javax.swing.JInternalFrame jInternalFrameListaDeputados;
     private javax.swing.JLabel jLabelFundo;

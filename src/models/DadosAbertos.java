@@ -22,7 +22,6 @@ public class DadosAbertos {
     public static List<Deputado> deputados;
     public static ModeloTabela tabelaDeputados;
     public static ModeloTabela tabelaPartidos;
-    public String pesquisarDeputados;
 
     public DadosAbertos(){
         
@@ -76,15 +75,5 @@ public class DadosAbertos {
 
     public static void setLinhasDeDadosPartidos(ArrayList linhasDeDadosPartidos) {
         DadosAbertos.linhasDeDadosPartidos = linhasDeDadosPartidos;
-    }
-
-    public String getPesquisarDeputados() {
-        return pesquisarDeputados;
-    }
-
-    public void setPesquisarDeputados(String pesquisarDeputados) {
-        this.pesquisarDeputados = pesquisarDeputados;
-    }
-
-    
+    } 
 }

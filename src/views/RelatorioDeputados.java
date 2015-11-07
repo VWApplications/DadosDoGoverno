@@ -1,32 +1,26 @@
 package views;
 
+import models.ModeloDeputados;
+
 public class RelatorioDeputados extends javax.swing.JFrame {
     
-    String linkFoto, UF, legislatura, dataNascimento, dataMorte, numeroLegislatura;
+    DetalhesDeputados detalhes;
     
-    public RelatorioDeputados(String nome, String partido, String estado, String email, String telefone, String condicao,
-                              String sexo, String IDCadastro, String matricula, String nomeParlamentar,
-                              String gabinete, String anexo, String linkFoto, String UF, String legislatura,
-                              String dataNascimento, String dataMorte, String numeroLegislatura) {
+    public RelatorioDeputados(ModeloDeputados deputado) {
         initComponents();
-        jTextFieldNome.setText(nome);
-        jTextFieldPartido.setText(partido);
-        jTextFieldEstado.setText(estado);
-        jTextFieldEmail.setText(email);
-        jTextFieldTelefone.setText(telefone);
-        jTextFieldCondicao.setText(condicao);
-        jTextFieldSexo.setText(sexo);
-        jTextFieldID.setText(IDCadastro);
-        jTextFieldMatricula.setText(matricula);
-        jTextFieldNomeParlamentar.setText(nomeParlamentar);
-        jTextFieldGabinete.setText(gabinete);
-        jTextFieldAnexo.setText(anexo);
-        this.UF = UF;
-        this.linkFoto = linkFoto;
-        this.legislatura = legislatura;
-        this.dataNascimento = dataNascimento;
-        this.dataMorte = dataMorte;
-        this.numeroLegislatura = numeroLegislatura;
+        jTextFieldNome.setText(deputado.getNome());
+        jTextFieldPartido.setText(deputado.getPartido());
+        jTextFieldEstado.setText(deputado.getEstado());
+        jTextFieldEmail.setText(deputado.getEmail());
+        jTextFieldTelefone.setText(deputado.getTelefone());
+        jTextFieldCondicao.setText(deputado.getCondicao());
+        jTextFieldSexo.setText(deputado.getSexo());
+        jTextFieldID.setText(deputado.getIDCadastro());
+        jTextFieldMatricula.setText(deputado.getMatricula());
+        jTextFieldNomeParlamentar.setText(deputado.getNomeParlamentar());
+        jTextFieldGabinete.setText(deputado.getGabinete());
+        jTextFieldAnexo.setText(deputado.getAnexo());
+        detalhes = new DetalhesDeputados(deputado);
     }
 
     @SuppressWarnings("unchecked")
@@ -106,7 +100,7 @@ public class RelatorioDeputados extends javax.swing.JFrame {
 
         jTextFieldPartido.setEditable(false);
         jPanelRelatorio.add(jTextFieldPartido);
-        jTextFieldPartido.setBounds(100, 20, 50, 27);
+        jTextFieldPartido.setBounds(100, 20, 60, 27);
 
         jLabelEstado.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabelEstado.setForeground(java.awt.Color.white);
@@ -276,8 +270,6 @@ public class RelatorioDeputados extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeParlamentarActionPerformed
 
     private void jButtonDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDetalhesActionPerformed
-        DetalhesDeputados detalhes = new DetalhesDeputados(linkFoto, UF, legislatura, dataNascimento,
-                                                           dataMorte, numeroLegislatura);
         detalhes.setVisible(true);
     }//GEN-LAST:event_jButtonDetalhesActionPerformed
 

@@ -1,5 +1,6 @@
 package views;
 
+import controllers.ControleDePesquisa;
 import javax.swing.JOptionPane;
 
 public class Ajuda extends javax.swing.JFrame {
