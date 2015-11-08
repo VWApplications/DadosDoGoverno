@@ -7,7 +7,7 @@ import models.ModeloTabela;
 
 public class ListaPartidos extends javax.swing.JFrame {  
     
-    ModeloTabela tabelaPartidos = ControleTabela.filtrarPartidos();
+    private ModeloTabela tabelaPartidos = ControleTabela.filtrarPartidos();
     private TableRowSorter<ModeloTabela> sorter;
     
     public ListaPartidos() {

@@ -52,7 +52,7 @@ public class ListaComissao extends javax.swing.JFrame {
         jLabelIMG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lei.png"))); // NOI18N
         jLabelIMG2.setToolTipText("");
         getContentPane().add(jLabelIMG2);
-        jLabelIMG2.setBounds(680, 10, 150, 140);
+        jLabelIMG2.setBounds(680, 10, 120, 140);
 
         jComboBoxOrdem.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBoxOrdem);

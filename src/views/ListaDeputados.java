@@ -8,9 +8,9 @@ import models.ModeloTabela;
 
 public class ListaDeputados extends javax.swing.JFrame{
     
-    ModeloDeputados deputado = new ModeloDeputados();
+    private ModeloDeputados deputado = new ModeloDeputados();
     private TableRowSorter<ModeloTabela> sorter;
-    ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
+    private ModeloTabela tabelaDeputados = DadosAbertos.getTabelaDeputados();
     
     public ListaDeputados() {
         initComponents();

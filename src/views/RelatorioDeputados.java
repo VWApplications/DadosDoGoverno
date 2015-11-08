@@ -4,7 +4,7 @@ import models.ModeloDeputados;
 
 public class RelatorioDeputados extends javax.swing.JFrame {
     
-    DetalhesDeputados detalhes;
+    private DetalhesDeputados detalhes;
     
     public RelatorioDeputados(ModeloDeputados deputado) {
         initComponents();

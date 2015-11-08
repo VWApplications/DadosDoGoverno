@@ -6,9 +6,9 @@ import java.util.List;
 
 public class DadosAbertos {
 
-    public static List<Deputado> deputados;
-    public static ModeloTabela tabelaDeputados;
-    public static ModeloTabela tabelaPartidos;
+    private static List<Deputado> deputados;
+    private static ModeloTabela tabelaDeputados;
+    private static ModeloTabela tabelaPartidos;
 
     public DadosAbertos(){
         

@@ -12,7 +12,7 @@ import models.DadosAbertos;
 
 public class TelaLogin extends javax.swing.JFrame {
 
-    static List<Deputado> deputados;
+    private static List<Deputado> deputados;
     
     public TelaLogin() {
         initComponents();
