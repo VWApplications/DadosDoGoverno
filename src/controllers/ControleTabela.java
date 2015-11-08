@@ -16,10 +16,8 @@ public class ControleTabela {
 
     public static void criarTabela(List<Deputado> deputados){
             
-        ArrayList linhasDeDadosDeputados = new ArrayList();
         ArrayList linhasDeDadosDetalhes = new ArrayList();
         ArrayList linhasDeDadosPartidos = new ArrayList();
-        String[] colunasDeputados = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",};
         String[] colunasDetalhes = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",
                                                 "sexo", "ID de cadastro", "Matricula", "Nome Parlamentar", 
                                                 "Gabinete", "Anexo", "Link da foto", "UF", "Legislatura", 
@@ -52,9 +50,6 @@ public class ControleTabela {
                                                        partidos.getNome()});
             }           
             
-            DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
-            DadosAbertos.setLinhasDeDadosDetalhes(linhasDeDadosDetalhes);
-            DadosAbertos.setLinhasDeDadosPartidos(linhasDeDadosPartidos);
             ModeloTabela tabelaDetalhes = new ModeloTabela(linhasDeDadosDetalhes, colunasDetalhes);
             DadosAbertos.setTabelaDeputados(tabelaDetalhes);
             ModeloTabela tabelaPartidos = new ModeloTabela(linhasDeDadosPartidos, colunasPartidos);
@@ -64,22 +59,16 @@ public class ControleTabela {
     
     public static ModeloTabela filtrarPartidos(){
         ModeloTabela tabela = DadosAbertos.getTabelaPartidos();
-        ArrayList<Object> dados = new ArrayList();
+        ControleRepeticao<Object[]> dados = new ControleRepeticao<Object[]>();
         String[] colunas = new String[]{"ID", "Sigla", "Nome"};
 
-            //Add a primeira linha na tabela
-            Object ID1 = tabela.getValueAt(0, 0);
-            Object sigla1 = tabela.getValueAt(0, 1);
-            Object nome1 = tabela.getValueAt(0, 2);
-            dados.add(new Object[]{ID1, sigla1, nome1});
-        
             //Percorrer todas as linhas da tabela
             for(int i = 0; i<tabela.getRowCount(); i++){
-                    //Verificar a primeira ocorrencia de um determinado elemento no array dados
-                    //Se a string se repetir então ele cai no print caso contrario e add no array 
-                    if(dados.indexOf(tabela.getValueAt(i, 0))!=-1){
-                        System.out.println("repetido");
-                    }else{
+                    Object dado1 = tabela.getValueAt(i, 0);
+                    Object dado2 = tabela.getValueAt(i, 1);
+                    Object dado3 = tabela.getValueAt(i, 2);
+                    if(!dados.contains(new Object[]{dado1, dado2, dado3})){
+                    
                             Object ID = tabela.getValueAt(i, 0);
                             Object sigla = tabela.getValueAt(i, 1);
                             Object nome = tabela.getValueAt(i, 2);

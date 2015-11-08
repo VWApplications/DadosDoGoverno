@@ -1,4 +1,10 @@
-Para executar o programa, compile ele no NetBeans adicionando todas a bibliotecas da pasta lib
-execute o programa TelaLogin.java e insira:
-Usuario: admin
-Senha: 1234
+- Para executar o programa, compile ele no NetBeans adicionando todas a bibliotecas da pasta lib
+
+- Execute o programa TelaLogin.java
+
+- Clique sobre o botão HELP para ter mais informações sobre como usar o software
+
+- Insira:
+	Usuario: admin
+	Senha: 1234
+

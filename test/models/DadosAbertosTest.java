@@ -81,19 +81,7 @@ public class DadosAbertosTest {
      */
     @Test
     public void testSetTabelaDeputados() {
-        System.out.println("setTabelaDeputados");
-        ModeloTabela tabelaDeputados = null;
-        DadosAbertos.setTabelaDeputados(tabelaDeputados);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTabelaPartidos method, of class DadosAbertos.
-     */
-    @Test
-    public void testGetTabelaPartidos() {
-        Camara camara = new Camara();
+                Camara camara = new Camara();
                 try {
                     camara.obterDados();
                 } catch (JAXBException | IOException ex) {
@@ -118,6 +106,14 @@ public class DadosAbertosTest {
                 ModeloTabela tabelaResult = DadosAbertos.getTabelaDeputados();
                 Object result = tabelaResult.getValueAt(0, 0);
                 assertEquals("ROSANGELA APARECIDA DA SILVA BARROS", result);
+    }
+
+    /**
+     * Test of getTabelaPartidos method, of class DadosAbertos.
+     */
+    @Test
+    public void testGetTabelaPartidos() {
+        
     }
 
     /**
@@ -156,80 +152,4 @@ public class DadosAbertosTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of getLinhasDeDadosDeputados method, of class DadosAbertos.
-     */
-    @Test
-    public void testGetLinhasDeDadosDeputados() {
-        System.out.println("getLinhasDeDadosDeputados");
-        ArrayList expResult = null;
-        ArrayList result = DadosAbertos.getLinhasDeDadosDeputados();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setLinhasDeDadosDeputados method, of class DadosAbertos.
-     */
-    @Test
-    public void testSetLinhasDeDadosDeputados() {
-        System.out.println("setLinhasDeDadosDeputados");
-        ArrayList linhasDeDadosDeputados = null;
-        DadosAbertos.setLinhasDeDadosDeputados(linhasDeDadosDeputados);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLinhasDeDadosDetalhes method, of class DadosAbertos.
-     */
-    @Test
-    public void testGetLinhasDeDadosDetalhes() {
-        System.out.println("getLinhasDeDadosDetalhes");
-        ArrayList expResult = null;
-        ArrayList result = DadosAbertos.getLinhasDeDadosDetalhes();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setLinhasDeDadosDetalhes method, of class DadosAbertos.
-     */
-    @Test
-    public void testSetLinhasDeDadosDetalhes() {
-        System.out.println("setLinhasDeDadosDetalhes");
-        ArrayList linhasDeDadosDetalhes = null;
-        DadosAbertos.setLinhasDeDadosDetalhes(linhasDeDadosDetalhes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLinhasDeDadosPartidos method, of class DadosAbertos.
-     */
-    @Test
-    public void testGetLinhasDeDadosPartidos() {
-        System.out.println("getLinhasDeDadosPartidos");
-        ArrayList expResult = null;
-        ArrayList result = DadosAbertos.getLinhasDeDadosPartidos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setLinhasDeDadosPartidos method, of class DadosAbertos.
-     */
-    @Test
-    public void testSetLinhasDeDadosPartidos() {
-        System.out.println("setLinhasDeDadosPartidos");
-        ArrayList linhasDeDadosPartidos = null;
-        DadosAbertos.setLinhasDeDadosPartidos(linhasDeDadosPartidos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

@@ -3,7 +3,6 @@ package views;
 import controllers.ControleTabela;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableRowSorter;
-import models.DadosAbertos;
 import models.ModeloTabela;
 
 public class ListaPartidos extends javax.swing.JFrame {  
