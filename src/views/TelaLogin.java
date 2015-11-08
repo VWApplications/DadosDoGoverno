@@ -76,8 +76,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabelUsuario);
         jLabelUsuario.setBounds(20, 80, 71, 40);
-
-        jTextFieldUsuario.setToolTipText("");
         getContentPane().add(jTextFieldUsuario);
         jTextFieldUsuario.setBounds(100, 90, 160, 27);
         getContentPane().add(jPasswordFieldSenha);

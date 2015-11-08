@@ -4,7 +4,6 @@ import edu.unb.fga.dadosabertos.Camara;
 import edu.unb.fga.dadosabertos.Deputado;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBException;
 import static models.DadosAbertos.deputados;
@@ -26,6 +25,7 @@ public class DadosAbertosTest {
     
     @BeforeClass
     public static void setUpClass() {
+        
     }
     
     @AfterClass
@@ -56,7 +56,7 @@ public class DadosAbertosTest {
                 deputados = camara.getDeputados();
 
                 ArrayList linhasDeDados = new ArrayList();
-                String[] colunas = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",};
+                String[] colunas = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição"};
 
                 for(Deputado deputado: deputados){
 
@@ -90,7 +90,7 @@ public class DadosAbertosTest {
                 deputados = camara.getDeputados();
 
                 ArrayList linhasDeDados = new ArrayList();
-                String[] colunas = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição",};
+                String[] colunas = new String[]{"Nome","Partido","Estado","Email","Telefone","Condição"};
 
                 for(Deputado deputado: deputados){
 
@@ -113,7 +113,7 @@ public class DadosAbertosTest {
      */
     @Test
     public void testGetTabelaPartidos() {
-        
+
     }
 
     /**
@@ -121,11 +121,7 @@ public class DadosAbertosTest {
      */
     @Test
     public void testSetTabelaPartidos() {
-        System.out.println("setTabelaPartidos");
-        ModeloTabela tabelaPartidos = null;
-        DadosAbertos.setTabelaPartidos(tabelaPartidos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -133,12 +129,17 @@ public class DadosAbertosTest {
      */
     @Test
     public void testGetDeputados() {
-        System.out.println("getDeputados");
-        List<Deputado> expResult = null;
-        List<Deputado> result = DadosAbertos.getDeputados();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Camara camara = new Camara();
+                try {
+                    camara.obterDados();
+                } catch (JAXBException | IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro na obtenção dos dados!\nErro:" + ex.getMessage());
+                }
+        deputados = camara.getDeputados();
+        
+        String nome = deputados.get(0).getNome();
+        
+        assertEquals("ROSANGELA APARECIDA DA SILVA BARROS", nome);
     }
 
     /**
@@ -146,10 +147,18 @@ public class DadosAbertosTest {
      */
     @Test
     public void testSetDeputados() {
-        System.out.println("setDeputados");
-        List<Deputado> deputados = null;
-        DadosAbertos.setDeputados(deputados);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Camara camara = new Camara();
+                try {
+                    camara.obterDados();
+                } catch (JAXBException | IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro na obtenção dos dados!\nErro:" + ex.getMessage());
+                }
+        deputados = camara.getDeputados();
+        
+        deputados.get(0).setNome("Victor Arnaud");
+        
+        String nome = deputados.get(0).getNome();
+        
+        assertEquals("Victor Arnaud", nome);
     }
 }
