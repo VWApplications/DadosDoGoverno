@@ -33,6 +33,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelBrasil2 = new javax.swing.JLabel();
         jProgressBar = new javax.swing.JProgressBar();
         jLabelBarra = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         JLabelFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -43,6 +44,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         JButtonSair.setText("Sair");
+        JButtonSair.setToolTipText("Sair");
         JButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButtonSairActionPerformed(evt);
@@ -52,6 +54,7 @@ public class TelaLogin extends javax.swing.JFrame {
         JButtonSair.setBounds(150, 200, 100, 40);
 
         JButtonAcessar.setText("Acessar");
+        JButtonAcessar.setToolTipText("Acessar Tela Principal");
         JButtonAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButtonAcessarActionPerformed(evt);
@@ -73,6 +76,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabelUsuario);
         jLabelUsuario.setBounds(20, 80, 71, 40);
+
+        jTextFieldUsuario.setToolTipText("");
         getContentPane().add(jTextFieldUsuario);
         jTextFieldUsuario.setBounds(100, 90, 160, 27);
         getContentPane().add(jPasswordFieldSenha);
@@ -103,9 +108,20 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(jLabelBarra);
         jLabelBarra.setBounds(19, 340, 610, 21);
 
+        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help2.png"))); // NOI18N
+        jButton1.setToolTipText("Instruções de uso");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(530, 140, 70, 70);
+
         JLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/telaDeFundo1.jpg"))); // NOI18N
         getContentPane().add(JLabelFundo);
-        JLabelFundo.setBounds(0, 0, 670, 370);
+        JLabelFundo.setBounds(0, 0, 640, 370);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonSairActionPerformed
@@ -163,6 +179,11 @@ public class TelaLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JButtonAcessarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Ajuda ajudar = new Ajuda();
+        ajudar.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -188,17 +209,6 @@ public class TelaLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
-        /*Camara camara = new Camara();
-        try {
-            camara.obterDados();
-        } catch (JAXBException | IOException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na obtenção dos dados!\nErro:" + ex.getMessage());
-        }
-        deputados = camara.getDeputados();
-        
-        DadosAbertos.setDeputados(deputados);*/
-        
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -212,6 +222,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton JButtonAcessar;
     private javax.swing.JButton JButtonSair;
     private javax.swing.JLabel JLabelFundo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelBarra;
     private javax.swing.JLabel jLabelBrasil;
     private javax.swing.JLabel jLabelBrasil2;

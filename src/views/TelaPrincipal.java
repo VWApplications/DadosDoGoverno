@@ -75,6 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButtonListaDePartidos.setBounds(70, 270, 140, 130);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
+        jButtonFechar.setToolTipText("Fechar");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFecharActionPerformed(evt);
@@ -93,6 +94,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelListaComissoes.setBounds(660, 30, 180, 21);
 
         jButtonListaComissoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lei.png"))); // NOI18N
+        jButtonListaComissoes.setToolTipText("Lista De Comissões");
         jButtonListaComissoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListaComissoesActionPerformed(evt);
@@ -108,6 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelAjuda.setBounds(670, 240, 150, 21);
 
         jButtonAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
+        jButtonAjuda.setToolTipText("Ajuda");
         jButtonAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAjudaActionPerformed(evt);

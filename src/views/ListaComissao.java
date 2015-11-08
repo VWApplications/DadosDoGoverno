@@ -50,6 +50,7 @@ public class ListaComissao extends javax.swing.JFrame {
         jLabelIMG1.setBounds(20, 10, 150, 140);
 
         jLabelIMG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lei.png"))); // NOI18N
+        jLabelIMG2.setToolTipText("");
         getContentPane().add(jLabelIMG2);
         jLabelIMG2.setBounds(680, 10, 150, 140);
 
@@ -62,10 +63,12 @@ public class ListaComissao extends javax.swing.JFrame {
         jButtonPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("PESQUISAR");
+        jButtonPesquisar.setToolTipText("pesquisar comissões");
         getContentPane().add(jButtonPesquisar);
         jButtonPesquisar.setBounds(470, 40, 200, 80);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
+        jButtonFechar.setToolTipText("sair");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFecharActionPerformed(evt);

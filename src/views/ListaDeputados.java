@@ -66,6 +66,7 @@ public class ListaDeputados extends javax.swing.JFrame{
         jButtonPesquisar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/pesquisar.png"))); // NOI18N
         jButtonPesquisar.setText("PESQUISAR");
+        jButtonPesquisar.setToolTipText("Pesquisar deputados");
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPesquisarActionPerformed(evt);
@@ -75,6 +76,7 @@ public class ListaDeputados extends javax.swing.JFrame{
         jButtonPesquisar.setBounds(200, 180, 220, 70);
 
         jButtonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fechar.png"))); // NOI18N
+        jButtonFechar.setToolTipText("Sair");
         jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFecharActionPerformed(evt);
