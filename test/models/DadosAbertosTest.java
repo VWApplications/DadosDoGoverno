@@ -4,9 +4,9 @@ import edu.unb.fga.dadosabertos.Camara;
 import edu.unb.fga.dadosabertos.Deputado;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBException;
-import static models.DadosAbertos.deputados;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,6 +19,8 @@ import static org.junit.Assert.*;
  * @author victor
  */
 public class DadosAbertosTest {
+    
+    List<Deputado> deputados;
     
     public DadosAbertosTest() {
     }

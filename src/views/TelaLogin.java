@@ -134,7 +134,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     for(int i=0; i<101; i++){
                         try{
                             //Ver a velocidade com que a barra de progresso irá andar, menor o valor mais rapido, 1000 = 1s de atraso a cada 1%
-                            sleep(3200);
+                            sleep(3100);
                             jProgressBar.setValue(i);
                             if(jProgressBar.getValue() <= 10){
                                 jLabelBarra.setText("Carregando Sistema...");

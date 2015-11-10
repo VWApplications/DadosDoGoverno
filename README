@@ -8,3 +8,37 @@
 	Usuario: admin
 	Senha: 1234
 
+Ao acessar irá aparecer uma barra de progresso onde irá pegar os dados abertos do governo, 
+demora em torno de 5 minutos.
+
+Lista Deputado:
+            Haverá uma tabela com todos os dados dos deputados.
+            Se quiser colocar a tabela em ordem crescente ou decrescente é só clicar nas colunas da tabela.
+            Se quiser ver o relatorio do deputado, clique no deputado e aperte no botão relatorio.
+
+Lista Partidos:
+            Haverá uma tabela com todos os dados dos partidos.
+            Se quiser colocar em ordem crescente ou decrescente é só clicar nas colunas da tabela.
+
+Lista Comissões:
+           Em construção.
+
+Ajuda:
+          Tem as instruções para usar o software.
+
+Sair:
+           Todo botão vermelho no canto superior direito.
+           Tem o botão de sair no menu principal.
+
+Voltar:
+           Todo botão com seta azul no canto superior direito.
+
+
+Relatorio:
+          Tem os dados de todos os deputados.
+          Clica no botão mais informações para ter os detalhes dos deputados, e mostrar a foto dele.
+
+Detalhes:
+          Apresenta os detalhes junto com a foto do deputado.
+
+
